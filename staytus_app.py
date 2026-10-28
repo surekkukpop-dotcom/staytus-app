@@ -2,33 +2,34 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(
-    page_title="Status AI - SKZ Edition",
+    page_title="Status AI - Stray Kids Edition",
     page_icon="🧭",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
 
+# Ocultar todos los elementos nativos de Streamlit para dejar pantalla limpia
 st.markdown(
     """
 <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    .block-container { padding: 0rem !important; max-width: 100% !important; }
+    .block-container { padding: 0rem !important; max-width: 100% !important; margin: 0 !important; }
     iframe { width: 100% !important; height: 100vh !important; border: none !important; }
+    [data-testid="stHeader"] { display: none !important; }
+    [data-testid="stToolbar"] { display: none !important; }
 </style>
 """,
     unsafe_allow_html=True,
 )
 
-html_code = """
-<!DOCTYPE html>
+html_code = """<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Status AI - SKZ Edition</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Status AI - Stray Kids Edition</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background-color: #000000; color: #e7e9ea; display: flex; justify-content: center; min-height: 100vh; overflow-x: hidden; }
@@ -46,8 +47,9 @@ html_code = """
             padding-bottom: 75px;
         }
 
+        /* TOP HEADER */
         .top-header {
-            position: sticky; top: 0; background: rgba(0, 0, 0, 0.90);
+            position: sticky; top: 0; background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(12px); z-index: 100; padding: 12px 16px;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid #16181c;
@@ -58,118 +60,121 @@ html_code = """
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             display: flex; align-items: center; gap: 6px;
         }
+        .energy-badge {
+            background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4);
+            padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 4px;
+        }
 
         /* STORIES BAR */
         .stories-container {
-            display: flex; gap: 14px; padding: 12px 16px; overflow-x: auto;
-            border-bottom: 1px solid #16181c; scrollbar-width: none; background: #000;
+            display: flex; gap: 14px; padding: 14px 16px; overflow-x: auto;
+            border-bottom: 1px solid #16181c; scrollbar-width: none;
         }
         .stories-container::-webkit-scrollbar { display: none; }
-        
-        .story-item { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex-shrink: 0; }
+        .story-item { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; flex-shrink: 0; }
         .story-ring {
-            width: 64px; height: 64px; border-radius: 50%; padding: 2.5px;
+            width: 64px; height: 64px; border-radius: 50%; padding: 2px;
             background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888);
             display: flex; align-items: center; justify-content: center;
         }
-        .story-avatar-img { width: 56px; height: 56px; border-radius: 50%; border: 2px solid #000; object-fit: cover; }
-        .story-username { font-size: 11px; color: #71767b; width: 64px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+        .story-avatar { width: 58px; height: 58px; border-radius: 50%; border: 2px solid #000; object-fit: cover; }
+        .story-username { font-size: 11px; color: #71767b; width: 66px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
 
         /* CREATE POST BOX */
         .create-post-box { padding: 14px 16px; border-bottom: 1px solid #16181c; display: flex; gap: 12px; background: #050505; }
-        .user-avatar-small { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid #a855f7; }
-        .create-post-input { flex: 1; background: transparent; border: none; color: #fff; font-size: 15px; outline: none; resize: none; min-height: 40px; }
-        .create-post-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
-        .post-btn { background: #a855f7; color: #fff; border: none; padding: 8px 18px; border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s; }
-        .post-btn:hover { background: #9333ea; }
+        .user-avatar-sm { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid #2f3336; }
+        .post-input-container { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .post-textarea { width: 100%; background: transparent; border: none; color: #f7f9f9; font-size: 15px; outline: none; resize: none; min-height: 48px; }
+        .post-btn-row { display: flex; justify-content: space-between; align-items: center; }
+        .post-submit-btn { background: #a855f7; color: #fff; border: none; padding: 8px 18px; border-radius: 20px; font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s; }
+        .post-submit-btn:hover { background: #9333ea; }
 
         /* FEED & POSTS */
         .feed { display: flex; flex-direction: column; }
-        .post { padding: 16px; border-bottom: 1px solid #16181c; display: flex; gap: 12px; background: #000; }
-        .post-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .post { padding: 16px; border-bottom: 1px solid #16181c; display: flex; gap: 12px; }
+        .post-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid #2f3336; }
         .post-content { flex: 1; }
         .post-header { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; flex-wrap: wrap; }
         .post-author { font-weight: 700; font-size: 15px; color: #f7f9f9; }
-        .verified-badge { color: #1d9bf0; font-size: 13px; }
+        .verified-badge { color: #1d9bf0; font-size: 13px; margin-left: 2px; }
         .post-handle { color: #71767b; font-size: 14px; }
         .post-text { font-size: 15px; line-height: 1.45; color: #e7e9ea; margin-bottom: 10px; }
-        .post-image { width: 100%; border-radius: 16px; margin-bottom: 10px; border: 1px solid #2f3336; max-height: 320px; object-fit: cover; }
-        .post-actions { display: flex; justify-content: space-between; max-width: 350px; color: #71767b; font-size: 13.5px; margin-top: 8px; }
-        .action-btn { cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; }
-        .action-btn:hover { color: #a855f7; }
-        .action-btn.liked { color: #f91880; }
+        .post-media { width: 100%; border-radius: 16px; margin-bottom: 10px; border: 1px solid #2f3336; max-height: 320px; object-fit: cover; }
+        .post-actions { display: flex; justify-content: space-between; max-width: 320px; color: #71767b; font-size: 13px; margin-top: 6px; }
+        .action-item { cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; }
+        .action-item:hover { color: #a855f7; }
+        .action-item.liked { color: #f91880; font-weight: 700; }
 
-        /* COMMENTS THREAD */
-        .comments-list { margin-top: 12px; padding-left: 12px; border-left: 2px solid #1e232a; display: flex; flex-direction: column; gap: 10px; }
-        .comment-item { display: flex; gap: 10px; font-size: 13.5px; }
-        .comment-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
-        .comment-body { flex: 1; background: #111418; padding: 8px 12px; border-radius: 12px; }
-        .comment-author { font-weight: 700; color: #f7f9f9; font-size: 13px; }
+        /* COMMENTS SECTION */
+        .comments-list { margin-top: 12px; padding-left: 10px; border-left: 2px solid #212327; display: flex; flex-direction: column; gap: 10px; }
+        .comment-item { display: flex; gap: 8px; font-size: 13px; line-height: 1.35; background: #0a0a0c; padding: 8px 12px; border-radius: 10px; border: 1px solid #16181c; }
+        .comment-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .comment-body { flex: 1; }
+        .comment-author { font-weight: 700; color: #f7f9f9; }
+        .comment-handle { color: #71767b; font-size: 12px; }
         .comment-text { color: #d9d9d9; margin-top: 2px; }
-        .comment-reply-btn { font-size: 11px; color: #a855f7; cursor: pointer; margin-top: 4px; display: inline-block; }
+        .comment-reply-btn { color: #a855f7; font-size: 11px; cursor: pointer; margin-top: 4px; display: inline-block; font-weight: 600; }
 
-        /* BOTTOM NAV */
+        .reply-input-box { margin-top: 8px; display: none; gap: 8px; }
+        .reply-input-box.active { display: flex; }
+        .reply-input { flex: 1; background: #16181c; border: 1px solid #2f3336; border-radius: 14px; padding: 6px 12px; color: #fff; font-size: 12px; outline: none; }
+        .reply-send-btn { background: #a855f7; color: white; border: none; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; }
+
+        /* TAB NAVIGATION */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
         .bottom-nav {
             position: fixed; bottom: 0; width: 100%; max-width: 480px;
             background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(12px);
             border-top: 1px solid #16181c; display: flex; justify-content: space-around;
             padding: 12px 0; z-index: 1000;
         }
-        .nav-item { color: #71767b; font-size: 20px; text-decoration: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; }
-        .nav-item.active { color: #f7f9f9; }
-        .nav-label { font-size: 10px; font-weight: 600; }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .nav-item { color: #71767b; font-size: 13px; text-decoration: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; font-weight: 600; }
+        .nav-item.active { color: #a855f7; }
 
         /* PROFILE TAB */
-        .profile-header { position: relative; }
-        .profile-banner { width: 100%; height: 130px; background: linear-gradient(135deg, #7928CA, #FF0080); }
-        .profile-avatar-wrapper { position: relative; width: 90px; height: 90px; margin-top: -45px; margin-left: 16px; }
-        .profile-avatar-img { width: 90px; height: 90px; border-radius: 50%; border: 4px solid #000; object-fit: cover; background: #202327; }
-        .change-avatar-badge {
-            position: absolute; bottom: 2px; right: 2px; background: #a855f7; color: #fff;
-            width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; border: 2px solid #000; font-size: 12px;
+        .profile-container { padding: 16px; display: flex; flex-direction: column; align-items: center; }
+        .profile-card { width: 100%; background: #0a0a0c; border: 1px solid #16181c; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; align-items: center; position: relative; text-align: center; }
+        .avatar-upload-wrapper { position: relative; width: 90px; height: 90px; margin-bottom: 12px; }
+        .profile-avatar-large { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid #a855f7; }
+        .camera-badge {
+            position: absolute; bottom: 0; right: 0; background: #a855f7; color: white;
+            width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 14px; border: 2px solid #000; cursor: pointer;
         }
-        .profile-info { padding: 16px; border-bottom: 1px solid #16181c; }
-        .profile-name { font-size: 20px; font-weight: 800; color: #fff; }
-        .profile-handle { color: #71767b; font-size: 14px; margin-bottom: 8px; }
-        .profile-bio { font-size: 14px; color: #e7e9ea; line-height: 1.4; margin-bottom: 12px; }
-        .profile-stats { display: flex; gap: 20px; font-size: 14px; color: #71767b; }
-        .profile-stats span { color: #fff; font-weight: 700; }
+        #avatar-file-input { display: none; }
 
         /* DMS TAB */
-        .dms-header { padding: 16px; border-bottom: 1px solid #16181c; font-size: 18px; font-weight: 800; }
-        .member-selector { display: flex; gap: 10px; padding: 12px 16px; overflow-x: auto; border-bottom: 1px solid #16181c; scrollbar-width: none; }
-        .member-pill { padding: 8px 14px; border-radius: 20px; background: #16181c; color: #71767b; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
-        .member-pill.active { background: #a855f7; color: #fff; }
-        .chat-box { padding: 16px; display: flex; flex-direction: column; gap: 12px; height: calc(100vh - 240px); overflow-y: auto; }
-        .chat-bubble { max-width: 82%; padding: 12px 16px; border-radius: 18px; font-size: 14.5px; line-height: 1.4; }
-        .chat-bubble.incoming { background: #202327; color: #e7e9ea; align-self: flex-start; border-bottom-left-radius: 4px; }
-        .chat-bubble.outgoing { background: #a855f7; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
-        .chat-input-bar { position: fixed; bottom: 65px; width: 100%; max-width: 480px; background: #000; padding: 10px 16px; display: flex; gap: 10px; border-top: 1px solid #16181c; }
-        .chat-input { flex: 1; background: #16181c; border: 1px solid #2f3336; border-radius: 20px; padding: 10px 16px; color: #fff; outline: none; font-size: 14px; }
+        .dms-container { display: flex; flex-direction: column; height: calc(100vh - 140px); }
+        .member-select-bar { display: flex; gap: 10px; overflow-x: auto; padding: 12px 16px; border-bottom: 1px solid #16181c; background: #050505; scrollbar-width: none; }
+        .member-select-bar::-webkit-scrollbar { display: none; }
+        .member-pill { padding: 8px 14px; background: #16181c; border-radius: 20px; color: #71767b; font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer; border: 1px solid #2f3336; }
+        .member-pill.active { background: #a855f7; color: #fff; border-color: #a855f7; }
 
-        /* STORY POPUP MODAL */
-        .story-modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); z-index: 2000; justify-content: center; align-items: center; }
+        .chat-box { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: #000; }
+        .chat-bubble { max-width: 82%; padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; }
+        .chat-bubble.incoming { background: #1a1a1e; color: #e7e9ea; align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid #2f3336; }
+        .chat-bubble.outgoing { background: #a855f7; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .chat-input-bar { padding: 10px 16px; background: #050505; border-top: 1px solid #16181c; display: flex; gap: 10px; position: sticky; bottom: 60px; }
+        .chat-input { flex: 1; background: #16181c; border: 1px solid #2f3336; border-radius: 20px; padding: 10px 16px; color: white; outline: none; font-size: 14px; }
+        .chat-send-btn { background: #a855f7; color: white; border: none; padding: 0 18px; border-radius: 20px; font-weight: 700; cursor: pointer; }
+
+        /* FULLSCREEN STORY MODAL */
+        .story-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); z-index: 2000; display: none; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
         .story-modal.active { display: flex; }
-        .story-card { width: 90%; max-width: 400px; height: 75vh; background: #111; border-radius: 20px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
-        .story-header { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; align-items: center; justify-content: space-between; z-index: 10; color: white; text-shadow: 0 1px 4px rgba(0,0,0,0.8); }
-        .story-user { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; }
-        .story-close { font-size: 22px; cursor: pointer; color: white; }
-        .story-img-main { width: 100%; height: 100%; object-fit: cover; }
-        .story-footer-text { position: absolute; bottom: 20px; left: 16px; right: 16px; color: white; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px); padding: 12px 16px; border-radius: 12px; font-size: 14px; }
+        .story-card-large { width: 100%; max-width: 400px; height: 80vh; background: #111; border-radius: 20px; overflow: hidden; position: relative; display: flex; flex-direction: column; border: 1px solid #333; }
+        .story-modal-img { width: 100%; height: 75%; object-fit: cover; }
+        .story-modal-info { padding: 16px; background: #16181c; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .story-close-btn { position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.6); color: white; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 18px; cursor: pointer; z-index: 10; }
     </style>
 </head>
 <body>
     <div class="app-container">
         <!-- TOP HEADER -->
         <div class="top-header">
-            <div class="app-logo"><i class="fa-solid fa-sparkles"></i> Status AI</div>
-            <div style="color:#a855f7; font-size: 12px; font-weight: 800; background: rgba(168,85,247,0.15); padding: 4px 10px; border-radius: 12px;">
-                ⚡ UNLIMITED
-            </div>
+            <div class="app-logo"><span>✨</span> STATUS AI</div>
+            <div class="energy-badge">⚡ UNLIMITED ENERGY</div>
         </div>
 
         <!-- TAB 1: FEED -->
@@ -177,208 +182,182 @@ html_code = """
             <!-- STORIES BAR -->
             <div class="stories-container" id="stories-bar"></div>
 
-            <!-- CREATE POST -->
+            <!-- CREATE POST BOX -->
             <div class="create-post-box">
-                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23ec4899'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='36'>G</text></svg>" class="user-avatar-small current-user-img">
-                <div style="flex:1;">
-                    <textarea class="create-post-input" id="new-post-text" placeholder="Post update as Manager @gaerwenill..."></textarea>
-                    <div class="create-post-actions">
-                        <span style="color:#a855f7; font-size: 16px;"><i class="fa-regular fa-image"></i> <i class="fa-solid fa-chart-simple" style="margin-left:8px;"></i></span>
-                        <button class="post-btn" onclick="publishPost()">Post</button>
+                <img id="my-avatar-sm" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23a855f7'/><text x='50' y='60' font-size='40' font-weight='bold' fill='white' text-anchor='middle'>G</text></svg>" class="user-avatar-sm">
+                <div class="post-input-container">
+                    <textarea id="new-post-text" class="post-textarea" placeholder="Post update as Manager @gaerwenill..."></textarea>
+                    <div class="post-btn-row">
+                        <span style="font-size:12px; color:#71767b;">Public to Stray Kids & STAYs</span>
+                        <button class="post-submit-btn" onclick="submitNewPost()">Post</button>
                     </div>
                 </div>
             </div>
 
             <!-- FEED LIST -->
-            <div class="feed" id="feed-posts"></div>
+            <div class="feed" id="feed-list"></div>
         </div>
 
-        <!-- TAB 2: DMS -->
-        <div id="tab-dms" class="tab-content">
-            <div class="dms-header">Direct Messages</div>
-            <div class="member-selector" id="member-selector"></div>
-            <div class="chat-box" id="chat-box"></div>
-            <div class="chat-input-bar">
-                <input type="text" id="dm-input" class="chat-input" placeholder="Message SKZ...">
-                <button class="post-btn" onclick="sendDM()">Send</button>
-            </div>
-        </div>
-
-        <!-- TAB 3: PROFILE -->
+        <!-- TAB 2: PROFILE -->
         <div id="tab-profile" class="tab-content">
-            <div class="profile-header">
-                <div class="profile-banner"></div>
-                <div class="profile-avatar-wrapper">
-                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23ec4899'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='36'>G</text></svg>" class="profile-avatar-img current-user-img" id="profile-avatar-display">
-                    <label for="avatar-input-file" class="change-avatar-badge">
-                        <i class="fa-solid fa-camera"></i>
-                    </label>
-                    <input type="file" id="avatar-input-file" accept="image/*" style="display:none;" onchange="uploadAvatar(event)">
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="avatar-upload-wrapper">
+                        <img id="my-avatar-lg" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23a855f7'/><text x='50' y='60' font-size='40' font-weight='bold' fill='white' text-anchor='middle'>G</text></svg>" class="profile-avatar-large">
+                        <label for="avatar-file-input" class="camera-badge">📷</label>
+                        <input type="file" id="avatar-file-input" accept="image/*" onchange="uploadMyAvatar(event)">
+                    </div>
+                    <h2 style="color:#f7f9f9; font-size:20px; font-weight:800;">Gaerwenill</h2>
+                    <p style="color:#a855f7; font-size:14px; font-weight:600; margin-top:2px;">@gaerwenill</p>
+                    <p style="color:#71767b; font-size:13px; margin-top:8px;">Head Manager of Stray Kids · JYP Entertainment</p>
+                    <div style="display:flex; gap:20px; margin-top:16px; font-size:13px; color:#e7e9ea;">
+                        <span><strong>8</strong> Members Managed</span>
+                        <span><strong>1.2M</strong> STAY Followers</span>
+                    </div>
+                    <button style="margin-top:20px; background:#16181c; border:1px solid #333; color:white; padding:10px 24px; border-radius:20px; font-size:13px; font-weight:700; cursor:pointer;" onclick="document.getElementById('avatar-file-input').click()">Change Profile Photo</button>
                 </div>
             </div>
-            <div class="profile-info">
-                <div class="profile-name">Gaerwenill <i class="fa-solid fa-circle-check verified-badge"></i></div>
-                <div class="profile-handle">@gaerwenill</div>
-                <div class="profile-bio">Head Manager of Stray Kids 🧭 | JYP Entertainment | Coordinating World Tour 2026 💖</div>
-                <div class="profile-stats">
-                    <div><span>8</span> Following</div>
-                    <div><span>1.4M</span> Followers</div>
-                    <div><span>99/100</span> Rep</div>
+        </div>
+
+        <!-- TAB 3: DMS -->
+        <div id="tab-dms" class="tab-content">
+            <div class="dms-container">
+                <div class="member-select-bar" id="dm-members-bar"></div>
+                <div class="chat-box" id="dm-chat-box"></div>
+                <div class="chat-input-bar">
+                    <input type="text" id="dm-input-text" class="chat-input" placeholder="Message member as @gaerwenill..." onkeypress="if(event.key==='Enter') sendDirectMessage()">
+                    <button class="chat-send-btn" onclick="sendDirectMessage()">Send</button>
                 </div>
             </div>
-            <div style="padding: 16px; font-weight: 700; color:#71767b; font-size: 13px;">MY RECENT POSTS</div>
-            <div id="my-posts-list"></div>
         </div>
 
         <!-- BOTTOM NAV -->
         <div class="bottom-nav">
-            <div class="nav-item active" onclick="switchTab('feed', this)">
-                <i class="fa-solid fa-house"></i>
-                <span class="nav-label">Feed</span>
-            </div>
-            <div class="nav-item" onclick="switchTab('dms', this)">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span class="nav-label">DMs</span>
-            </div>
-            <div class="nav-item" onclick="switchTab('profile', this)">
-                <i class="fa-solid fa-user"></i>
-                <span class="nav-label">Profile</span>
-            </div>
+            <a class="nav-item active" onclick="switchTab('feed', this)"><span>🏠</span><span>Feed</span></a>
+            <a class="nav-item" onclick="switchTab('profile', this)"><span>👤</span><span>Profile</span></a>
+            <a class="nav-item" onclick="switchTab('dms', this)"><span>💬</span><span>DMs</span></a>
         </div>
     </div>
 
-    <!-- STORY POPUP MODAL -->
+    <!-- STORY FULLSCREEN MODAL -->
     <div class="story-modal" id="story-modal">
-        <div class="story-card">
-            <div class="story-header">
-                <div class="story-user">
-                    <img id="modal-user-img" style="width:32px; height:32px; border-radius:50%; object-fit:cover;">
-                    <span id="modal-user-name"></span>
+        <div class="story-card-large">
+            <button class="story-close-btn" onclick="closeStoryModal()">✕</button>
+            <img id="story-modal-img" class="story-modal-img" src="">
+            <div class="story-modal-info">
+                <div>
+                    <h3 id="story-modal-author" style="color:white; font-size:16px; font-weight:800;"></h3>
+                    <p id="story-modal-caption" style="color:#d9d9d9; font-size:14px; margin-top:6px;"></p>
                 </div>
-                <span class="story-close" onclick="closeStory()">&times;</span>
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                    <input type="text" placeholder="Reply to story..." style="flex:1; background:#000; border:1px solid #333; border-radius:16px; padding:8px 12px; color:white; font-size:13px;">
+                    <button style="background:#a855f7; color:white; border:none; padding:0 14px; border-radius:16px; font-weight:700;" onclick="closeStoryModal()">Send</button>
+                </div>
             </div>
-            <img id="modal-story-img" class="story-img-main">
-            <div class="story-footer-text" id="modal-story-caption"></div>
         </div>
     </div>
 
     <script>
-        // DATA & ASSETS - Embedded SVG Data URLs for 100% Guaranteed Image Render everywhere
-        function svgAvatar(bg, text) {
-            return `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='${bg}'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='36'>${text}</text></svg>`;
+        // BASE64 GRAPHIC ASSETS FOR 100% RELIABILITY ON ALL MOBILE BROWSERS
+        function createAvatarSVG(text, bgHex) {
+            return "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><rect width='120' height='120' fill='%23" + bgHex + "'/><text x='60' y='72' font-size='44' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>" + text + "</text></svg>";
         }
 
-        function svgCard(bg, title, subtitle) {
-            return `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='${bg}'/><text x='50%' y='45%' dominant-baseline='middle' text-anchor='middle' fill='%23ffffff' font-family='sans-serif' font-weight='bold' font-size='28'>${title}</text><text x='50%' y='60%' dominant-baseline='middle' text-anchor='middle' fill='%23e2e8f0' font-family='sans-serif' font-size='18'>${subtitle}</text></svg>`;
+        function createCardSVG(title, subtitle, bgHex) {
+            return "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='350' viewBox='0 0 600 350'><rect width='600' height='350' fill='%23" + bgHex + "'/><circle cx='500' cy='80' r='120' fill='white' opacity='0.08'/><text x='40' y='180' font-size='32' font-weight='bold' fill='white' font-family='sans-serif'>" + title + "</text><text x='40' y='225' font-size='20' fill='%23e2e8f0' font-family='sans-serif'>" + subtitle + "</text></svg>";
         }
 
-        let currentUserAvatar = svgAvatar('%23ec4899', 'G');
+        let userAvatar = createAvatarSVG("G", "a855f7");
 
-        const MEMBERS = [
-            { id: "chan", name: "Bang Chan", handle: "@gnabnahc", avatar: svgAvatar('%233b82f6', 'BC'), storyImg: svgCard('%231e3a8a', '3RACHA Studio 🎧', 'Late night track production'), storyCap: "Late night recording session at 3RACHA studio" },
-            { id: "felix", name: "Felix", handle: "@yong.lixx", avatar: svgAvatar('%23eab308', 'FL'), storyImg: svgCard('%23854d0e', 'Homemade Brownies 🍪', 'For Manager @gaerwenill'), storyCap: "Fresh batch of homemade brownies for @gaerwenill!" },
-            { id: "leeknow", name: "Lee Know", handle: "@t.leeknow", avatar: svgAvatar('%2322c55e', 'LK'), storyImg: svgCard('%2314532d', 'Cats Corner 🐱', 'Sooni, Doongi & Dori'), storyCap: "Sooni, Doongi, and Dori approve this schedule" },
-            { id: "hyunjin", name: "Hyunjin", handle: "@hynjinnnn", avatar: svgAvatar('%23a855f7', 'HJ'), storyImg: svgCard('%23581c87', 'Art Studio 🎨', 'New canvas painting finished'), storyCap: "Finished painting in my art room" },
-            { id: "changbin", name: "Changbin", handle: "@jutdwae", avatar: svgAvatar('%23ef4444', 'CB'), storyImg: svgCard('%237f1d1d', 'Gym Session 💪', 'JUTDAE energy 100%'), storyCap: "JUTDAE energy after 3 hours gym session!" },
-            { id: "han", name: "Han", handle: "@_doolsetnet", avatar: svgAvatar('%2306b6d4', 'HN'), storyImg: svgCard('%23164e63', 'Songwriting 🎵', 'Comeback demo track'), storyCap: "Writing new tracks for comeback" },
-            { id: "seungmin", name: "Seungmin", handle: "@miniverse.___", avatar: svgAvatar('%236366f1', 'SM'), storyImg: svgCard('%23312e81', 'Vocal Practice 🐶', 'Warmup session done'), storyCap: "Vocal warmup completed for today" },
-            { id: "in", name: "I.N", handle: "@i.2.n.8", avatar: svgAvatar('%23f97316', 'IN'), storyImg: svgCard('%237c2d12', 'Today OOTD 😎', 'Maknae style'), storyCap: "Today's OOTD check for schedule!" }
+        const SKZ_MEMBERS = [
+            { id: "bangchan", name: "Bang Chan", handle: "@gnabnahc", avatar: createAvatarSVG("BC", "4f46e5"), storyImg: createCardSVG("3RACHA Studio Session", "Late night producing World Tour tracklist", "311465"), replyTemplate: "Thanks @gaerwenill! The boys and I are reviewing the rehearsal notes now." },
+            { id: "leeknow", name: "Lee Know", handle: "@t.leeknow", avatar: createAvatarSVG("LK", "059669"), storyImg: createCardSVG("Cats & Practice", "Sooni, Doongi, and Dori approved the choreography", "064e3b"), replyTemplate: "Got your message @gaerwenill. Tell the kitchen to save pudding for us." },
+            { id: "changbin", name: "Changbin", handle: "@jutdwae", avatar: createAvatarSVG("CB", "dc2626"), storyImg: createCardSVG("Gym & JUTDAE", "Conviction is key! 3RACHA studio break", "7f1d1d"), replyTemplate: "JUTDAE!! Ready for tomorrow's vocal check Manager @gaerwenill!" },
+            { id: "hyunjin", name: "Hyunjin", handle: "@hynjinnnn", avatar: createAvatarSVG("HJ", "d97706"), storyImg: createCardSVG("Art Studio Painting", "New canvas finished before stage rehearsal", "78350f"), replyTemplate: "Thank you Manager @gaerwenill! I will make sure my outfit fitting is on time." },
+            { id: "han", name: "Han Jisung", handle: "@_doolsetnet", avatar: createAvatarSVG("HN", "2563eb"), storyImg: createCardSVG("Lyrical Inspiration", "Cheesecake break in the recording booth", "1e3a8a"), replyTemplate: "I wrote two new rap verses for track 4! Check your email @gaerwenill!" },
+            { id: "felix", name: "Felix", handle: "@yong.lixx", avatar: createAvatarSVG("FL", "ec4899"), storyImg: createCardSVG("Fresh Cookies Baked", "Homemade brownies for @gaerwenill & 3RACHA", "831843"), replyTemplate: "Manager @gaerwenill! I saved extra chocolate chip cookies for you in the lounge!" },
+            { id: "seungmin", name: "Seungmin", handle: "@miniverse.___", avatar: createAvatarSVG("SM", "0891b2"), storyImg: createCardSVG("Vocal Recording", "Warmup done for the upcoming album stage", "164e63"), replyTemplate: "Vocal warmup completed @gaerwenill. Changbin hyung is being noisy as usual." },
+            { id: "in", name: "I.N", handle: "@i.2.n.8", avatar: createAvatarSVG("IN", "9333ea"), storyImg: createCardSVG("Maknae OOTD", "Outfit check before evening broadcast", "581c87"), replyTemplate: "Thanks @gaerwenill hyung/nuna! Maknae energy is fully charged for tonight!" }
         ];
 
-        let selectedMemberId = "chan";
+        const OFFICIAL_ACCOUNTS = {
+            dispatch: { name: "Dispatch Official", handle: "@kpop_dispatch", avatar: createAvatarSVG("DIS", "b91c1c") },
+            jyp: { name: "JYP Entertainment", handle: "@jyp_official_news", avatar: createAvatarSVG("JYP", "1d4ed8") },
+            stay_updates: { name: "STAY World Updates", handle: "@stay_updates", avatar: createAvatarSVG("STAY", "db2777") },
+            stay_latam: { name: "STAY Latam", handle: "@stay_latam", avatar: createAvatarSVG("LAT", "059669") }
+        };
+
+        let activeDMUserId = "bangchan";
 
         let postsData = [
             {
-                id: 1, author: "Bang Chan", handle: "@gnabnahc", avatar: MEMBERS[0].avatar, verified: true, time: "15m",
-                text: "Huge thanks to our Head Manager @gaerwenill for organizing the entire World Tour 2026 rehearsal schedule! STAYs get ready!",
-                postImg: svgCard('%231e293b', 'STRAY KIDS WORLD TOUR 2026 🧭', 'Live Rehearsal Stage'),
-                likes: 45200, liked: false,
-                comments: [
-                    { author: "Felix", handle: "@yong.lixx", avatar: MEMBERS[1].avatar, text: "Chanie hyung is right! Manager @gaerwenill is the best!" },
-                    { author: "STAY Official", handle: "@stay_updates", avatar: svgAvatar('%23ec4899', 'ST'), text: "WE LOVE YOU MANAGER @gaerwenill!! THANK YOU FOR PROTECTING OUR BOYS!" },
-                    { author: "Lee Know", handle: "@t.leeknow", avatar: MEMBERS[2].avatar, text: "Now buy us meat after practice @gaerwenill!" },
-                    { author: "STAY Latam", handle: "@stay_latam", avatar: svgAvatar('%23f43f5e', 'LA'), text: "We are so ready for World Tour!!" },
-                    { author: "SKZ Tokyo Fans", handle: "@skz_tokyo", avatar: svgAvatar('%238b5cf6', 'TK'), text: "See you in Tokyo Dome!!" }
+                id: 1, author: SKZ_MEMBERS[0].name, handle: SKZ_MEMBERS[0].handle, avatar: SKZ_MEMBERS[0].avatar, verified: true,
+                time: "15m", text: "Huge shoutout to our head manager @gaerwenill for organizing the entire World Tour rehearsal schedule! STAYs, get ready!",
+                media: createCardSVG("STRAY KIDS WORLD TOUR 2026", "Live Rehearsal Stage at JYPE Center", "311465"),
+                likes: 48200, comments: [
+                    { author: SKZ_MEMBERS[5].name, handle: SKZ_MEMBERS[5].handle, avatar: SKZ_MEMBERS[5].avatar, text: "Manager @gaerwenill worked so hard today! Brought cookies for everyone!" },
+                    { author: OFFICIAL_ACCOUNTS.stay_updates.name, handle: OFFICIAL_ACCOUNTS.stay_updates.handle, avatar: OFFICIAL_ACCOUNTS.stay_updates.avatar, text: "WE LOVE YOU MANAGER @gaerwenill! THANK YOU FOR PROTECTING SKZ!" },
+                    { author: OFFICIAL_ACCOUNTS.stay_latam.name, handle: OFFICIAL_ACCOUNTS.stay_latam.handle, avatar: OFFICIAL_ACCOUNTS.stay_latam.avatar, text: "STAYs around the world are ready! Thank you Manager @gaerwenill!" }
                 ]
             },
             {
-                id: 2, author: "Felix", handle: "@yong.lixx", avatar: MEMBERS[1].avatar, verified: true, time: "42m",
-                text: "Made fresh chocolate chip cookies for @gaerwenill and all 3RACHA members today! Hope everyone stays warm ✨🍪",
-                postImg: svgCard('%2378350f', 'Felix Homemade Brownies 🍪', 'Fresh from oven'),
-                likes: 89100, liked: false,
-                comments: [
-                    { author: "Hyunjin", handle: "@hynjinnnn", avatar: MEMBERS[3].avatar, text: "Save some for me and @gaerwenill!!" },
-                    { author: "STAY Global", handle: "@stay_global", avatar: svgAvatar('%2310b981', 'SG'), text: "Felix is literally an angel 😭❤️" },
-                    { author: "Changbin", handle: "@jutdwae", avatar: MEMBERS[4].avatar, text: "Protein cookies next Felix!!" }
+                id: 2, author: SKZ_MEMBERS[5].name, handle: SKZ_MEMBERS[5].handle, avatar: SKZ_MEMBERS[5].avatar, verified: true,
+                time: "45m", text: "Baked fresh chocolate chip brownies for Manager @gaerwenill and all the members during studio break!",
+                media: createCardSVG("Felix's Homemade Bakery", "Fresh Brownies for @gaerwenill & Members", "831843"),
+                likes: 92400, comments: [
+                    { author: SKZ_MEMBERS[1].name, handle: SKZ_MEMBERS[1].handle, avatar: SKZ_MEMBERS[1].avatar, text: "Where is my share @yong.lixx? Did Manager @gaerwenill eat them all?" },
+                    { author: SKZ_MEMBERS[2].name, handle: SKZ_MEMBERS[2].handle, avatar: SKZ_MEMBERS[2].avatar, text: "Protein brownies next time! Great job Felix!" }
                 ]
             },
             {
-                id: 3, author: "Dispatch Official", handle: "@kpop_dispatch", avatar: svgAvatar('%23dc2626', 'DP'), verified: true, time: "2h",
-                text: "BREAKING: Stray Kids Head Manager @gaerwenill spotted arriving at JYPE Headquarters for emergency comeback meeting.",
-                postImg: svgCard('%23991b1b', 'DISPATCH EXCLUSIVE 🚨', 'Manager @gaerwenill at JYP Center'),
-                likes: 120400, liked: false,
-                comments: [
-                    { author: "SKZ Charts", handle: "@skz_chart_data", avatar: svgAvatar('%230284c7', 'CD'), text: "COMEBACK IS COMING GUYS STAY TUNED!!" },
-                    { author: "JYP Official", handle: "@jyp_official_news", avatar: svgAvatar('%232563eb', 'JYP'), text: "Official statement releasing soon." }
+                id: 3, author: OFFICIAL_ACCOUNTS.dispatch.name, handle: OFFICIAL_ACCOUNTS.dispatch.handle, avatar: OFFICIAL_ACCOUNTS.dispatch.avatar, verified: true,
+                time: "2h", text: "BREAKING: Stray Kids Head Manager @gaerwenill spotted arriving at JYP Center for final stage review.",
+                media: createCardSVG("DISPATCH EXCLUSIVE", "Manager @gaerwenill Arriving at JYP Center", "b91c1c"),
+                likes: 134000, comments: [
+                    { author: OFFICIAL_ACCOUNTS.jyp.name, handle: OFFICIAL_ACCOUNTS.jyp.handle, avatar: OFFICIAL_ACCOUNTS.jyp.avatar, text: "Official preparations underway under Manager @gaerwenill." }
                 ]
             }
         ];
 
-        let dmsData = {
-            chan: [
-                { sender: "them", text: "Hey Manager @gaerwenill! Thanks for arranging the rehearsal time. Do you have a second to check track 3 mix?" }
-            ],
-            felix: [
-                { sender: "them", text: "Manager @gaerwenill!! Did you try the brownies I left on your desk? 🍪" }
-            ],
-            leeknow: [
-                { sender: "them", text: "Manager @gaerwenill, Seungmin is teasing Changbin again. Come mediate please haha." }
-            ],
-            hyunjin: [
-                { sender: "them", text: "Hi @gaerwenill! What time is our fitting tomorrow?" }
-            ],
-            changbin: [
-                { sender: "them", text: "JUTDAE!! Ready for gym session after recording @gaerwenill!" }
-            ],
-            han: [
-                { sender: "them", text: "I wrote 2 new verses @gaerwenill! Sending audio demo now!" }
-            ],
-            seungmin: [
-                { sender: "them", text: "Vocal recording finished @gaerwenill. Everything went smoothly!" }
-            ],
-            in: [
-                { sender: "them", text: "Manager @gaerwenill, can we get iced americano for everyone?" }
+        let dmHistory = {
+            bangchan: [
+                { sender: "incoming", text: "Hey @gaerwenill! Thanks for reviewing the schedule. Do you have a second to confirm tomorrow's soundcheck time?" }
             ]
         };
 
-        // RENDER FUNCTIONS
+        // RENDER STORIES BAR
         function renderStories() {
+            let container = document.getElementById("stories-bar");
             let html = "";
-            MEMBERS.forEach((m, idx) => {
+            SKZ_MEMBERS.forEach((m, idx) => {
                 html += `
-                    <div class="story-item" onclick="openStory(${idx})">
-                        <div class="story-ring">
-                            <img src="${m.avatar}" class="story-avatar-img">
-                        </div>
+                    <div class="story-item" onclick="openStoryModal(${idx})">
+                        <div class="story-ring"><img src="${m.avatar}" class="story-avatar"></div>
                         <span class="story-username">${m.handle}</span>
                     </div>
                 `;
             });
-            document.getElementById("stories-bar").innerHTML = html;
+            container.innerHTML = html;
         }
 
+        // RENDER FEED
         function renderFeed() {
+            let container = document.getElementById("feed-list");
             let html = "";
-            postsData.forEach(p => {
+            postsData.forEach((p, pIdx) => {
                 let commentsHtml = "";
-                p.comments.forEach((c) => {
+                p.comments.forEach((c, cIdx) => {
                     commentsHtml += `
                         <div class="comment-item">
                             <img src="${c.avatar}" class="comment-avatar">
                             <div class="comment-body">
-                                <div class="comment-author">${c.author} <span style="color:#71767b; font-weight:normal;">${c.handle}</span></div>
+                                <div><span class="comment-author">${c.author}</span> <span class="comment-handle">${c.handle}</span></div>
                                 <div class="comment-text">${c.text}</div>
-                                <span class="comment-reply-btn" onclick="replyToComment(${p.id}, '${c.handle}')"><i class="fa-solid fa-reply"></i> Reply</span>
+                                <span class="comment-reply-btn" onclick="toggleReplyBox(${pIdx}, ${cIdx})">💬 Reply</span>
+                                <div class="reply-input-box" id="reply-box-${pIdx}-${cIdx}">
+                                    <input type="text" class="reply-input" id="reply-input-${pIdx}-${cIdx}" placeholder="Reply to ${c.handle} as @gaerwenill...">
+                                    <button class="reply-send-btn" onclick="sendCommentReply(${pIdx}, ${cIdx}, '${c.handle}')">Send</button>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -390,178 +369,163 @@ html_code = """
                         <div class="post-content">
                             <div class="post-header">
                                 <span class="post-author">${p.author}</span>
-                                ${p.verified ? '<i class="fa-solid fa-circle-check verified-badge"></i>' : ''}
+                                ${p.verified ? '<span class="verified-badge">☑️</span>' : ''}
                                 <span class="post-handle">${p.handle} · ${p.time}</span>
                             </div>
                             <div class="post-text">${p.text}</div>
-                            ${p.postImg ? `<img src="${p.postImg}" class="post-image">` : ''}
+                            ${p.media ? `<img src="${p.media}" class="post-media">` : ''}
                             <div class="post-actions">
-                                <span class="action-btn" onclick="focusComment(${p.id})"><i class="fa-regular fa-comment"></i> ${p.comments.length}</span>
-                                <span class="action-btn"><i class="fa-solid fa-retweet"></i> 1.2K</span>
-                                <span class="action-btn ${p.liked ? 'liked' : ''}" onclick="toggleLike(${p.id})">
-                                    <i class="${p.liked ? 'fa-solid' : 'fa-regular'} fa-heart"></i> ${p.likes.toLocaleString()}
-                                </span>
+                                <div class="action-item ${p.liked ? 'liked' : ''}" onclick="toggleLike(${pIdx})">
+                                    <span>${p.liked ? '❤️' : '🤍'}</span> <span>${p.likes.toLocaleString()}</span>
+                                </div>
+                                <div class="action-item"><span>💬</span> <span>${p.comments.length}</span></div>
+                                <div class="action-item"><span>🔄</span> <span>Share</span></div>
                             </div>
-                            <div class="comments-list">${commentsHtml}</div>
+                            <div class="comments-list">
+                                ${commentsHtml}
+                            </div>
                         </div>
                     </div>
                 `;
             });
-            document.getElementById("feed-posts").innerHTML = html;
+            container.innerHTML = html;
         }
 
-        function renderMemberSelector() {
-            let html = "";
-            MEMBERS.forEach(m => {
-                let activeClass = m.id === selectedMemberId ? 'active' : '';
-                html += `
-                    <div class="member-pill ${activeClass}" onclick="selectMember('${m.id}')">
-                        <img src="${m.avatar}" style="width:20px; height:20px; border-radius:50%; object-fit:cover;">
-                        ${m.name}
-                    </div>
-                `;
-            });
-            document.getElementById("member-selector").innerHTML = html;
-            renderChat();
-        }
-
-        function renderChat() {
-            let msgs = dmsData[selectedMemberId] || [];
-            let html = "";
-            let currentMem = MEMBERS.find(m => m.id === selectedMemberId);
-            msgs.forEach(m => {
-                let isOut = m.sender === "me";
-                html += `
-                    <div class="chat-bubble ${isOut ? 'outgoing' : 'incoming'}">
-                        <strong>${isOut ? '@gaerwenill' : currentMem.name}:</strong><br>
-                        ${m.text}
-                    </div>
-                `;
-            });
-            let chatBox = document.getElementById("chat-box");
-            chatBox.innerHTML = html;
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-
-        // ACTIONS
-        function toggleLike(postId) {
-            let post = postsData.find(p => p.id === postId);
-            if (post) {
-                post.liked = !post.liked;
-                post.likes += post.liked ? 1 : -1;
-                renderFeed();
+        // TOGGLE LIKE
+        function toggleLike(pIdx) {
+            if (postsData[pIdx].liked) {
+                postsData[pIdx].liked = false;
+                postsData[pIdx].likes--;
+            } else {
+                postsData[pIdx].liked = true;
+                postsData[pIdx].likes++;
             }
+            renderFeed();
         }
 
-        function publishPost() {
+        // SUBMIT NEW POST AS MANAGER
+        function submitNewPost() {
             let input = document.getElementById("new-post-text");
             let text = input.value.trim();
-            if (text) {
-                let newP = {
+            if (text !== "") {
+                let newPost = {
                     id: Date.now(),
                     author: "Gaerwenill",
                     handle: "@gaerwenill",
-                    avatar: currentUserAvatar,
+                    avatar: userAvatar,
                     verified: true,
                     time: "Just now",
                     text: text,
-                    likes: 1,
-                    liked: true,
+                    likes: 1240,
                     comments: [
-                        { author: "Bang Chan", handle: "@gnabnahc", avatar: MEMBERS[0].avatar, text: "Got it Manager @gaerwenill! We will follow this schedule!" },
-                        { author: "Felix", handle: "@yong.lixx", avatar: MEMBERS[1].avatar, text: "Thank you @gaerwenill!!" }
+                        { author: SKZ_MEMBERS[0].name, handle: SKZ_MEMBERS[0].handle, avatar: SKZ_MEMBERS[0].avatar, text: "Got it Manager @gaerwenill! 3RACHA is on it!" },
+                        { author: SKZ_MEMBERS[5].name, handle: SKZ_MEMBERS[5].handle, avatar: SKZ_MEMBERS[5].avatar, text: "Thank you Manager @gaerwenill! ❤️✨" }
                     ]
                 };
-                postsData.unshift(newP);
+                postsData.unshift(newPost);
                 input.value = "";
                 renderFeed();
-                renderMyPosts();
             }
         }
 
-        function replyToComment(postId, handle) {
-            let post = postsData.find(p => p.id === postId);
-            if (post) {
-                let replyText = prompt(`Reply to ${handle} as @gaerwenill:`);
-                if (replyText) {
-                    post.comments.push({
-                        author: "Gaerwenill",
-                        handle: "@gaerwenill",
-                        avatar: currentUserAvatar,
-                        text: replyText
-                    });
-                    renderFeed();
-                }
+        // TOGGLE REPLY INPUT BOX
+        function toggleReplyBox(pIdx, cIdx) {
+            let box = document.getElementById(`reply-box-${pIdx}-${cIdx}`);
+            if (box) {
+                box.classList.toggle("active");
             }
         }
 
-        function focusComment(postId) {
-            replyToComment(postId, "this post");
-        }
-
-        function selectMember(id) {
-            selectedMemberId = id;
-            renderMemberSelector();
-        }
-
-        function sendDM() {
-            let input = document.getElementById("dm-input");
+        // SEND REPLY TO COMMENT
+        function sendCommentReply(pIdx, cIdx, targetHandle) {
+            let input = document.getElementById(`reply-input-${pIdx}-${cIdx}`);
             let text = input.value.trim();
-            if (text) {
-                if (!dmsData[selectedMemberId]) dmsData[selectedMemberId] = [];
-                dmsData[selectedMemberId].push({ sender: "me", text: text });
-                input.value = "";
-                renderChat();
-
-                setTimeout(() => {
-                    let mem = MEMBERS.find(m => m.id === selectedMemberId);
-                    let replies = [
-                        `Thank you Manager @gaerwenill! Really appreciate your help as always.`,
-                        `Got your message @gaerwenill! I will tell the rest of the members right away.`,
-                        `Sounds great @gaerwenill! See you at JYPE building in a bit!`
-                    ];
-                    let randomReply = replies[Math.floor(Math.random() * replies.length)];
-                    dmsData[selectedMemberId].push({ sender: "them", text: randomReply });
-                    renderChat();
-                }, 1000);
+            if (text !== "") {
+                postsData[pIdx].comments.push({
+                    author: "Gaerwenill",
+                    handle: "@gaerwenill",
+                    avatar: userAvatar,
+                    text: `${targetHandle} ${text}`
+                });
+                renderFeed();
             }
         }
 
-        function uploadAvatar(event) {
+        // UPLOAD USER AVATAR
+        function uploadMyAvatar(event) {
             let file = event.target.files[0];
             if (file) {
                 let reader = new FileReader();
                 reader.onload = function(e) {
-                    currentUserAvatar = e.target.result;
-                    document.querySelectorAll(".current-user-img").forEach(img => {
-                        img.src = currentUserAvatar;
-                    });
-                    postsData.forEach(p => {
-                        if (p.handle === "@gaerwenill") p.avatar = currentUserAvatar;
-                        p.comments.forEach(c => {
-                            if (c.handle === "@gaerwenill") c.avatar = currentUserAvatar;
-                        });
-                    });
+                    userAvatar = e.target.result;
+                    document.getElementById("my-avatar-sm").src = userAvatar;
+                    document.getElementById("my-avatar-lg").src = userAvatar;
                     renderFeed();
-                    renderMyPosts();
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        function openStory(idx) {
-            let mem = MEMBERS[idx];
-            document.getElementById("modal-user-img").src = mem.avatar;
-            document.getElementById("modal-user-name").innerText = mem.name + " (" + mem.handle + ")";
-            document.getElementById("modal-story-img").src = mem.storyImg;
-            document.getElementById("modal-story-caption").innerText = mem.storyCap;
+        // DMs TAB LOGIC
+        function renderDMMembersBar() {
+            let bar = document.getElementById("dm-members-bar");
+            let html = "";
+            SKZ_MEMBERS.forEach(m => {
+                let active = (m.id === activeDMUserId) ? "active" : "";
+                html += `<div class="member-pill ${active}" onclick="selectDMMember('${m.id}')">${m.name}</div>`;
+            });
+            bar.innerHTML = html;
+        }
+
+        function selectDMMember(memberId) {
+            activeDMUserId = memberId;
+            renderDMMembersBar();
+            renderDMChatBox();
+        }
+
+        function renderDMChatBox() {
+            let box = document.getElementById("dm-chat-box");
+            let msgs = dmHistory[activeDMUserId] || [];
+            let html = "";
+            msgs.forEach(m => {
+                html += `<div class="chat-bubble ${m.sender}">${m.text}</div>`;
+            });
+            box.innerHTML = html;
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function sendDirectMessage() {
+            let input = document.getElementById("dm-input-text");
+            let text = input.value.trim();
+            if (text !== "") {
+                if (!dmHistory[activeDMUserId]) dmHistory[activeDMUserId] = [];
+                dmHistory[activeDMUserId].push({ sender: "outgoing", text: text });
+                input.value = "";
+                renderDMChatBox();
+
+                setTimeout(() => {
+                    let member = SKZ_MEMBERS.find(m => m.id === activeDMUserId);
+                    let replyText = member ? member.replyTemplate : "Got your message Manager @gaerwenill!";
+                    dmHistory[activeDMUserId].push({ sender: "incoming", text: replyText });
+                    renderDMChatBox();
+                }, 1200);
+            }
+        }
+
+        // STORY MODAL LOGIC
+        function openStoryModal(idx) {
+            let member = SKZ_MEMBERS[idx];
+            document.getElementById("story-modal-img").src = member.storyImg;
+            document.getElementById("story-modal-author").innerText = member.name + " (" + member.handle + ")";
+            document.getElementById("story-modal-caption").innerText = "Recent story update from " + member.name + " for Manager @gaerwenill";
             document.getElementById("story-modal").classList.add("active");
         }
 
-        function closeStory() {
+        function closeStoryModal() {
             document.getElementById("story-modal").classList.remove("active");
         }
 
+        // TAB SWITCHING
         function switchTab(tabName, el) {
             document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
             document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
@@ -569,28 +533,14 @@ html_code = """
             el.classList.add("active");
         }
 
-        function renderMyPosts() {
-            let myPosts = postsData.filter(p => p.handle === "@gaerwenill");
-            let html = "";
-            myPosts.forEach(p => {
-                html += `
-                    <div style="padding:12px 16px; border-bottom:1px solid #16181c;">
-                        <div style="font-weight:700;">${p.text}</div>
-                        <div style="color:#71767b; font-size:12px; margin-top:4px;">${p.time} · ❤️ ${p.likes}</div>
-                    </div>
-                `;
-            });
-            document.getElementById("my-posts-list").innerHTML = html;
-        }
-
-        // INIT
+        // INITIALIZE APP
         renderStories();
         renderFeed();
-        renderMemberSelector();
-        renderMyPosts();
+        renderDMMembersBar();
+        renderDMChatBox();
     </script>
 </body>
 </html>
 """
 
-components.html(html_code, height=920, scrolling=True)
+components.html(html_code, height=950, scrolling=True)
