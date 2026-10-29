@@ -18,8 +18,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-html_content = """
-<!DOCTYPE html>
+html_content = """<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -56,7 +55,7 @@ html_content = """
             display: flex; align-items: center; gap: 6px;
         }
         .header-avatar {
-            width: 34px; height: 34px; border-radius: 50%; object-fit: cover;
+            width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
             border: 2px solid #a855f7; cursor: pointer;
         }
 
@@ -103,7 +102,7 @@ html_content = """
         .story-close-btn { background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; padding: 4px 8px; }
 
         .story-modal-body { flex: 1; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; }
-        .story-modal-img { width: 100%; height: 100%; object-fit: contain; }
+        .story-modal-img { width: 100%; height: 100%; object-fit: cover; }
 
         .story-modal-footer { padding: 12px 16px 20px 16px; background: rgba(0,0,0,0.8); display: flex; gap: 10px; align-items: center; }
         .story-input { flex: 1; background: #1e293b; border: 1px solid #334155; border-radius: 20px; padding: 10px 16px; color: #fff; outline: none; font-size: 14px; }
@@ -115,19 +114,19 @@ html_content = """
         .create-post-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid #a855f7; }
         .create-post-input-area { flex: 1; display: flex; flex-direction: column; gap: 10px; }
         .create-post-textarea { width: 100%; background: transparent; border: none; color: #f7f9f9; outline: none; font-size: 16px; resize: none; min-height: 50px; }
-        .create-post-actions { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #16181c; pt: 10px; margin-top: 6px; padding-top: 8px; }
+        .create-post-actions { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #16181c; padding-top: 8px; margin-top: 6px; }
         .post-btn { background: #a855f7; color: white; border: none; padding: 8px 18px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 14px; }
         .attach-btn { background: #1e293b; color: #a855f7; border: 1px solid #334155; padding: 6px 12px; border-radius: 16px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px; }
 
         .post { padding: 16px; border-bottom: 1px solid #16181c; display: flex; gap: 12px; }
-        .post-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: #16181c; }
+        .post-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background: #16181c; border: 1px solid #334155; }
         .post-content { flex: 1; }
         .post-header { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; flex-wrap: wrap; }
         .post-author { font-weight: 700; font-size: 15px; color: #f7f9f9; }
-        .verified-badge { color: #1d9bf0; font-size: 13px; }
+        .verified-badge { color: #a855f7; font-size: 13px; }
         .post-handle { color: #71767b; font-size: 14px; }
         .post-text { font-size: 15px; line-height: 1.4; color: #e7e9ea; margin-bottom: 10px; white-space: pre-wrap; }
-        .post-image-card { width: 100%; border-radius: 16px; margin-bottom: 10px; border: 1px solid #2f3336; object-fit: cover; max-height: 320px; }
+        .post-image-card { width: 100%; border-radius: 16px; margin-bottom: 10px; border: 1px solid #2f3336; object-fit: cover; max-height: 340px; }
 
         .post-actions { display: flex; justify-content: space-between; max-width: 360px; color: #71767b; font-size: 13px; margin-top: 8px; }
         .action-item { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 4px; transition: color 0.2s; }
@@ -137,7 +136,7 @@ html_content = """
         /* COMMENTS */
         .comments-list { margin-top: 12px; border-top: 1px solid #16181c; padding-top: 10px; display: flex; flex-direction: column; gap: 10px; }
         .comment-item { display: flex; gap: 10px; background: #0b0e14; padding: 10px 12px; border-radius: 12px; border: 1px solid #1e293b; }
-        .comment-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+        .comment-avatar { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid #334155; }
         .comment-body { flex: 1; }
         .comment-author { font-weight: 700; font-size: 13px; color: #f7f9f9; }
         .comment-handle { color: #64748b; font-size: 12px; }
@@ -178,7 +177,7 @@ html_content = """
         .profile-header { padding: 0 16px 16px 16px; position: relative; display: flex; flex-direction: column; border-bottom: 1px solid #16181c; }
         .profile-avatar-wrapper { position: relative; width: 84px; height: 84px; margin-top: -42px; margin-bottom: 10px; }
         .profile-avatar { width: 84px; height: 84px; border-radius: 50%; border: 4px solid #000; object-fit: cover; background: #1e293b; }
-        .profile-cam-btn { position: absolute; bottom: 2px; right: 2px; background: #a855f7; color: #fff; border: 2px solid #000; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; shadow: 0 2px 6px rgba(0,0,0,0.5); }
+        .profile-cam-btn { position: absolute; bottom: 2px; right: 2px; background: #a855f7; color: #fff; border: 2px solid #000; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.5); }
         
         .profile-name { font-size: 20px; font-weight: 900; color: #fff; display: flex; align-items: center; gap: 6px; }
         .profile-handle { color: #64748b; font-size: 14px; margin-bottom: 8px; }
@@ -202,626 +201,623 @@ html_content = """
     </style>
 </head>
 <body>
-    <!-- FILE INPUTS FOR UPLOADS -->
-    <input type="file" id="profile-upload" accept="image/*" style="display:none;" onchange="uploadProfilePhoto(event)">
-    <input type="file" id="post-upload" accept="image/*" style="display:none;" onchange="uploadPostPhoto(event)">
 
-    <div class="app-container">
-        <!-- TOP HEADER -->
-        <div class="top-header">
-            <div class="app-logo"><span>✨ Status AI</span></div>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="color:#a855f7; font-size: 12px; font-weight: 800; background: rgba(168,85,247,0.15); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(168,85,247,0.3);">⚡ UNLIMITED ENERGY</span>
-                <img id="header-my-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ2FlcndlbmlsbCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5MzMzRUEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0VDNDg5OSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2dhZXJ3ZW5pbGwiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19nYWVyd2VuaWxsKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9nYWVyd2VuaWxsKSI+R1c8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+RkTwvdGV4dD4KPC9zdmc+" class="header-avatar" onclick="switchTab('profile')" title="View Profile">
-            </div>
-        </div>
-
-        <!-- TAB 1: FEED -->
-        <div id="tab-feed" class="tab-content active">
-            <!-- STORIES CAROUSEL -->
-            <div class="stories-container">
-                <div class="story-item" onclick="openStory('gaerwenill')">
-                    <div class="story-ring"><img id="story-my-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ2FlcndlbmlsbCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5MzMzRUEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0VDNDg5OSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2dhZXJ3ZW5pbGwiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19nYWVyd2VuaWxsKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9nYWVyd2VuaWxsKSI+R1c8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+RkTwvdGV4dD4KPC9zdmc+" class="story-avatar"></div>
-                    <span class="story-username">@gaerwenill</span>
-                </div>
-                <div class="story-item" onclick="openStory('chan')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+" class="story-avatar"></div>
-                    <span class="story-username">gnabnahc</span>
-                </div>
-                <div class="story-item" onclick="openStory('felix')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmVsaXgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDNGNUUiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9mZWxpeCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2ZlbGl4KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9mZWxpeCkiPkZMPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKU8L3RleHQ+Cjwvc3ZnPg==" class="story-avatar"></div>
-                    <span class="story-username">yong.lixx</span>
-                </div>
-                <div class="story-item" onclick="openStory('leeknow')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfbGVla25vdyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNTk2NjkiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzEwQjk4MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2xlZWtub3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19sZWVrbm93KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9sZWVrbm93KSI+TEs8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QsTwvdGV4dD4KPC9zdmc+" class="story-avatar"></div>
-                    <span class="story-username">t.leeknow</span>
-                </div>
-                <div class="story-item" onclick="openStory('hyunjin')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaHl1bmppbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNEOTc3MDYiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhCNUNGNiIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2h5dW5qaW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19oeXVuamluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oeXVuamluKSI+SEo8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+lnzwvdGV4dD4KPC9zdmc+" class="story-avatar"></div>
-                    <span class="story-username">hynjinnnn</span>
-                </div>
-                <div class="story-item" onclick="openStory('han')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaGFuIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI1NjNFQiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDZCNkQ0IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImZfaGFuIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjQiIHN0ZERldmlhdGlvbj0iNiIgZmxvb2QtY29sb3I9IiMwMDAiIGZsb29kLW9wYWNpdHk9IjAuNiIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMTAwIiBmaWxsPSJ1cmwoI2dfaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oYW4pIj5KUzwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0MiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjI4IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6aYPC90ZXh0Pgo8L3N2Zz4=" class="story-avatar"></div>
-                    <span class="story-username">_doolsetnet</span>
-                </div>
-                <div class="story-item" onclick="openStory('changbin')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbmdiaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjREMyNjI2IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNTlFMEIiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9jaGFuZ2JpbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2NoYW5nYmluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuZ2JpbikiPkNCPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLfwn5CwPC90ZXh0Pgo8L3N2Zz4=" class="story-avatar"></div>
-                    <span class="story-username">jutdwae</span>
-                </div>
-                <div class="story-item" onclick="openStory('seungmin')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc2V1bmdtaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDI4NEM3IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzOEJERjgiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9zZXVuZ21pbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX3NldW5nbWluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9zZXVuZ21pbikiPlNNPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLY8L3RleHQ+Cjwvc3ZnPg==" class="story-avatar"></div>
-                    <span class="story-username">miniverse.___</span>
-                </div>
-                <div class="story-item" onclick="openStory('in')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUE1ODBDIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGOTczMTYiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9pbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2luKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9pbikiPklOPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpoo8L3RleHQ+Cjwvc3ZnPg==" class="story-avatar"></div>
-                    <span class="story-username">i.2.n.8</span>
-                </div>
-                <div class="story-item" onclick="openStory('dispatch')">
-                    <div class="story-ring"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZGlzcGF0Y2giIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMTE4MjciIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9kaXNwYXRjaCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2Rpc3BhdGNoKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9kaXNwYXRjaCkiPkQ8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+aqDwvdGV4dD4KPC9zdmc+" class="story-avatar"></div>
-                    <span class="story-username">kpop_dispatch</span>
-                </div>
-            </div>
-
-            <!-- CREATE POST BOX -->
-            <div class="create-post-box">
-                <img id="create-my-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ2FlcndlbmlsbCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5MzMzRUEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0VDNDg5OSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2dhZXJ3ZW5pbGwiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19nYWVyd2VuaWxsKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9nYWVyd2VuaWxsKSI+R1c8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+RkTwvdGV4dD4KPC9zdmc+" class="create-post-avatar">
-                <div class="create-post-input-area">
-                    <textarea id="new-post-text" class="create-post-textarea" placeholder="Post update as Head Manager @gaerwenill..."></textarea>
-                    <div id="post-img-preview-container" style="display:none; position:relative; width:100%; max-height:200px; overflow:hidden; border-radius:12px; margin-bottom:8px;">
-                        <img id="post-img-preview" src="" style="width:100%; object-fit:cover;">
-                        <button onclick="removePostImg()" style="position:absolute; top:8px; right:8px; background:rgba(0,0,0,0.8); color:#fff; border:none; border-radius:50%; width:26px; height:26px; cursor:pointer;">✕</button>
-                    </div>
-                    <div class="create-post-actions">
-                        <button class="attach-btn" onclick="document.getElementById('post-upload').click()">📷 Add Photo</button>
-                        <button class="post-btn" onclick="createNewPost()">Post Update</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FEED POSTS -->
-            <div class="feed" id="feed-container">
-                <!-- POST 1: BANG CHAN -->
-                <div class="post" id="post-1">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+" class="post-avatar">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">Bang Chan</span> <span class="verified-badge">☑️</span>
-                            <span class="post-handle">@gnabnahc · 15m</span>
-                        </div>
-                        <div class="post-text">Huge shoutout to our Head Manager @gaerwenill for organizing the entire world tour schedule! STAYs, get ready for the ultimate stage! 🔥❤️</div>
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDUwIiB2aWV3Qm94PSIwIDAgODAwIDQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfZ3JhZF/wn4+f77iPIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNiMDc2NCIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjcF9ncmFkX/Cfj5/vuI8pIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iNzYwIiBoZWlnaHQ9IjQxMCIgcng9IjE2IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjMiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPgogIDx0ZXh0IHg9IjQwMCIgeT0iMTgwIiBmb250LXNpemU9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn4+f77iPPC90ZXh0PgogIDxyZWN0IHg9IjI1MCIgeT0iMjIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM2IiByeD0iMTgiIGZpbGw9IiNhODU1ZjciLz4KICA8dGV4dCB4PSI0MDAiIHk9IjI0NCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MSVZFIFNUQUdFPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzEwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldPUkxEIFRPVVIgMjAyNiBTVEFHRSBSRUhFQVJTQUw8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzNTAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2NiZDVlMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U1RSQVkgS0lEUyBPRkZJQ0lBTCBNRURJQSDCtyBTVEFUVVMgQUk8L3RleHQ+Cjwvc3ZnPg==" class="post-image-card">
-                        <div class="post-actions">
-                            <div class="action-item">💬 <span id="comments-count-1">3</span></div>
-                            <div class="action-item">🔄 8,910</div>
-                            <div class="action-item" onclick="toggleLike(this, 1)">❤️ <span class="like-num">45.2K</span></div>
-                        </div>
-
-                        <!-- COMMENTS THREAD -->
-                        <div class="comments-list" id="comments-list-1">
-                            <div class="comment-item">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmVsaXgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDNGNUUiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9mZWxpeCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2ZlbGl4KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9mZWxpeCkiPkZMPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKU8L3RleHQ+Cjwvc3ZnPg==" class="comment-avatar">
-                                <div class="comment-body">
-                                    <div class="comment-author">Felix <span class="verified-badge">☑️</span> <span class="comment-handle">@yong.lixx</span></div>
-                                    <div class="comment-text">Manager @gaerwenill worked so hard! Made extra brownies for everyone! 🍪✨</div>
-                                    <button class="comment-reply-btn" onclick="toggleReplyBox('reply-box-1-1')">💬 Reply</button>
-                                    <div class="inline-reply-box" id="reply-box-1-1">
-                                        <input type="text" class="inline-reply-input" id="reply-input-1-1" placeholder="Reply to @yong.lixx as @gaerwenill...">
-                                        <button class="inline-reply-send" onclick="sendReply(1, 'Felix', '@yong.lixx', 'reply-input-1-1', 'reply-box-1-1')">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="comment-item">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfbGVla25vdyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNTk2NjkiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzEwQjk4MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2xlZWtub3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19sZWVrbm93KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9sZWVrbm93KSI+TEs8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QsTwvdGV4dD4KPC9zdmc+" class="comment-avatar">
-                                <div class="comment-body">
-                                    <div class="comment-author">Lee Know <span class="verified-badge">☑️</span> <span class="comment-handle">@t.leeknow</span></div>
-                                    <div class="comment-text">Great job @gaerwenill. Now please order meat for dinner. 🥩</div>
-                                    <button class="comment-reply-btn" onclick="toggleReplyBox('reply-box-1-2')">💬 Reply</button>
-                                    <div class="inline-reply-box" id="reply-box-1-2">
-                                        <input type="text" class="inline-reply-input" id="reply-input-1-2" placeholder="Reply to @t.leeknow as @gaerwenill...">
-                                        <button class="inline-reply-send" onclick="sendReply(1, 'Lee Know', '@t.leeknow', 'reply-input-1-2', 'reply-box-1-2')">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POST 2: FELIX -->
-                <div class="post" id="post-2">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmVsaXgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDNGNUUiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9mZWxpeCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2ZlbGl4KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9mZWxpeCkiPkZMPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKU8L3RleHQ+Cjwvc3ZnPg==" class="post-avatar">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">Felix</span> <span class="verified-badge">☑️</span>
-                            <span class="post-handle">@yong.lixx · 45m</span>
-                        </div>
-                        <div class="post-text">Baked fresh chocolate brownies for @gaerwenill and the boys after practice today! Hope everyone stays warm and happy! ✨🍪</div>
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDUwIiB2aWV3Qm94PSIwIDAgODAwIDQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfZ3JhZF/wn42qIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzgzMTg0MyIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMzEwZTIxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjcF9ncmFkX/CfjaopIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iNzYwIiBoZWlnaHQ9IjQxMCIgcng9IjE2IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjMiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPgogIDx0ZXh0IHg9IjQwMCIgeT0iMTgwIiBmb250LXNpemU9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn42qPC90ZXh0PgogIDxyZWN0IHg9IjI1MCIgeT0iMjIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM2IiByeD0iMTgiIGZpbGw9IiNhODU1ZjciLz4KICA8dGV4dCB4PSI0MDAiIHk9IjI0NCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GRUxJWCBCQUtFUlkg8J+NqjwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjMxMCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI4IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GUkVTSCBCUk9XTklFUyBGT1IgTUFOQUdFUiBAR0FFUldFTklMTDwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjM1MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNjAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjY2JkNWUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVFJBWSBLSURTIE9GRklDSUFMIE1FRElBIMK3IFNUQVRVUyBBSTwvdGV4dD4KPC9zdmc+" class="post-image-card">
-                        <div class="post-actions">
-                            <div class="action-item">💬 <span id="comments-count-2">2</span></div>
-                            <div class="action-item">🔄 12.4K</div>
-                            <div class="action-item" onclick="toggleLike(this, 2)">❤️ <span class="like-num">89.1K</span></div>
-                        </div>
-
-                        <div class="comments-list" id="comments-list-2">
-                            <div class="comment-item">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbmdiaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjREMyNjI2IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNTlFMEIiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9jaGFuZ2JpbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2NoYW5nYmluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuZ2JpbikiPkNCPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLfwn5CwPC90ZXh0Pgo8L3N2Zz4=" class="comment-avatar">
-                                <div class="comment-body">
-                                    <div class="comment-author">Changbin <span class="verified-badge">☑️</span> <span class="comment-handle">@jutdwae</span></div>
-                                    <div class="comment-text">Are these protein brownies? Save 5 for me @yong.lixx! 💪</div>
-                                    <button class="comment-reply-btn" onclick="toggleReplyBox('reply-box-2-1')">💬 Reply</button>
-                                    <div class="inline-reply-box" id="reply-box-2-1">
-                                        <input type="text" class="inline-reply-input" id="reply-input-2-1" placeholder="Reply to @jutdwae as @gaerwenill...">
-                                        <button class="inline-reply-send" onclick="sendReply(2, 'Changbin', '@jutdwae', 'reply-input-2-1', 'reply-box-2-1')">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- POST 3: DISPATCH -->
-                <div class="post" id="post-3">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZGlzcGF0Y2giIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMTE4MjciIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9kaXNwYXRjaCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2Rpc3BhdGNoKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9kaXNwYXRjaCkiPkQ8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+aqDwvdGV4dD4KPC9zdmc+" class="post-avatar">
-                    <div class="post-content">
-                        <div class="post-header">
-                            <span class="post-author">Dispatch Official</span> <span class="verified-badge">☑️</span>
-                            <span class="post-handle">@kpop_dispatch · 2h</span>
-                        </div>
-                        <div class="post-text">🚨 BREAKING EXCLUSIVE: Stray Kids Head Manager @gaerwenill spotted arriving at JYP Entertainment for final tour meetings!</div>
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDUwIiB2aWV3Qm94PSIwIDAgODAwIDQ1MCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfZ3JhZF/wn5O4IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdmMWQxZCIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0NTAiIGZpbGw9InVybCgjcF9ncmFkX/Cfk7gpIi8+CiAgPHJlY3QgeD0iMjAiIHk9IjIwIiB3aWR0aD0iNzYwIiBoZWlnaHQ9IjQxMCIgcng9IjE2IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjMiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPgogIDx0ZXh0IHg9IjQwMCIgeT0iMTgwIiBmb250LXNpemU9IjgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn5O4PC90ZXh0PgogIDxyZWN0IHg9IjI1MCIgeT0iMjIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM2IiByeD0iMTgiIGZpbGw9IiNhODU1ZjciLz4KICA8dGV4dCB4PSI0MDAiIHk9IjI0NCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ESVNQQVRDSCBCUkVBS0lORyDwn5qoPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzEwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVYQ0xVU0lWRTogTUFOQUdFUiBAR0FFUldFTklMTCBBVCBKWVBFPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzUwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI2MDAiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNjYmQ1ZTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNUUkFZIEtJRFMgT0ZGSUNJQUwgTUVESUEgwrcgU1RBVFVTIEFJPC90ZXh0Pgo8L3N2Zz4=" class="post-image-card">
-                        <div class="post-actions">
-                            <div class="action-item">💬 <span id="comments-count-3">1</span></div>
-                            <div class="action-item">🔄 34.2K</div>
-                            <div class="action-item" onclick="toggleLike(this, 3)">❤️ <span class="like-num">120.5K</span></div>
-                        </div>
-
-                        <div class="comments-list" id="comments-list-3">
-                            <div class="comment-item">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc3RheTEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjQzA4NEZDIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDcyQjYiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9zdGF5MSIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX3N0YXkxKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9zdGF5MSkiPlNUPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkpY8L3RleHQ+Cjwvc3ZnPg==" class="comment-avatar">
-                                <div class="comment-body">
-                                    <div class="comment-author">STAY World <span class="comment-handle">@stay_updates</span></div>
-                                    <div class="comment-text">WE LOVE YOU MANAGER @GAERWENILL! THANK YOU FOR PROTECTING OUR BOYS! 💖✨</div>
-                                    <button class="comment-reply-btn" onclick="toggleReplyBox('reply-box-3-1')">💬 Reply</button>
-                                    <div class="inline-reply-box" id="reply-box-3-1">
-                                        <input type="text" class="inline-reply-input" id="reply-input-3-1" placeholder="Reply to @stay_updates as @gaerwenill...">
-                                        <button class="inline-reply-send" onclick="sendReply(3, 'STAY World', '@stay_updates', 'reply-input-3-1', 'reply-box-3-1')">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 2: STORIES FULL TAB -->
-        <div id="tab-stories" class="tab-content">
-            <div style="padding: 16px; font-weight: 900; font-size: 18px; border-bottom: 1px solid #16181c;">
-                📸 Recent Stray Kids Stories
-            </div>
-            <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;">
-                <div style="background:#111827; padding:12px; border-radius:12px; display:flex; align-items:center; gap:12px; cursor:pointer;" onclick="openStory('chan')">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+" style="width:48px; height:48px; border-radius:50%; object-fit:cover;">
-                    <div>
-                        <div style="font-weight:700;">Bang Chan (@gnabnahc)</div>
-                        <div style="font-size:12px; color:#94a3b8;">3RACHA Studio Session 🎧</div>
-                    </div>
-                </div>
-                <div style="background:#111827; padding:12px; border-radius:12px; display:flex; align-items:center; gap:12px; cursor:pointer;" onclick="openStory('felix')">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmVsaXgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDNGNUUiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9mZWxpeCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2ZlbGl4KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9mZWxpeCkiPkZMPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKU8L3RleHQ+Cjwvc3ZnPg==" style="width:48px; height:48px; border-radius:50%; object-fit:cover;">
-                    <div>
-                        <div style="font-weight:700;">Felix (@yong.lixx)</div>
-                        <div style="font-size:12px; color:#94a3b8;">Fresh Brownies Baking 🍪</div>
-                    </div>
-                </div>
-                <div style="background:#111827; padding:12px; border-radius:12px; display:flex; align-items:center; gap:12px; cursor:pointer;" onclick="openStory('leeknow')">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfbGVla25vdyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNTk2NjkiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzEwQjk4MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2xlZWtub3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19sZWVrbm93KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9sZWVrbm93KSI+TEs8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QsTwvdGV4dD4KPC9zdmc+" style="width:48px; height:48px; border-radius:50%; object-fit:cover;">
-                    <div>
-                        <div style="font-weight:700;">Lee Know (@t.leeknow)</div>
-                        <div style="font-size:12px; color:#94a3b8;">Cats Corner 🐱</div>
-                    </div>
-                </div>
-                <div style="background:#111827; padding:12px; border-radius:12px; display:flex; align-items:center; gap:12px; cursor:pointer;" onclick="openStory('hyunjin')">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaHl1bmppbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNEOTc3MDYiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhCNUNGNiIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2h5dW5qaW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19oeXVuamluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oeXVuamluKSI+SEo8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+lnzwvdGV4dD4KPC9zdmc+" style="width:48px; height:48px; border-radius:50%; object-fit:cover;">
-                    <div>
-                        <div style="font-weight:700;">Hyunjin (@hynjinnnn)</div>
-                        <div style="font-size:12px; color:#94a3b8;">Art Canvas Session 🎨</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 3: DMS TAB -->
-        <div id="tab-dms" class="tab-content">
-            <div class="dm-layout">
-                <!-- DM SIDEBAR MEMBERS -->
-                <div class="dm-sidebar">
-                    <div class="dm-member-item active" onclick="selectDMChat('chan', 'Bang Chan', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+', '@gnabnahc', this)">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+" class="dm-member-avatar">
-                        <span class="dm-member-name">Bang Chan</span>
-                    </div>
-                    <div class="dm-member-item" onclick="selectDMChat('felix', 'Felix', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmVsaXgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDNGNUUiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9mZWxpeCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2ZlbGl4KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9mZWxpeCkiPkZMPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKU8L3RleHQ+Cjwvc3ZnPg==', '@yong.lixx', this)">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmVsaXgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDNGNUUiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9mZWxpeCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2ZlbGl4KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9mZWxpeCkiPkZMPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKU8L3RleHQ+Cjwvc3ZnPg==" class="dm-member-avatar">
-                        <span class="dm-member-name">Felix</span>
-                    </div>
-                    <div class="dm-member-item" onclick="selectDMChat('leeknow', 'Lee Know', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfbGVla25vdyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNTk2NjkiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzEwQjk4MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2xlZWtub3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19sZWVrbm93KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9sZWVrbm93KSI+TEs8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QsTwvdGV4dD4KPC9zdmc+', '@t.leeknow', this)">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfbGVla25vdyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNTk2NjkiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzEwQjk4MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2xlZWtub3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19sZWVrbm93KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9sZWVrbm93KSI+TEs8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QsTwvdGV4dD4KPC9zdmc+" class="dm-member-avatar">
-                        <span class="dm-member-name">Lee Know</span>
-                    </div>
-                    <div class="dm-member-item" onclick="selectDMChat('hyunjin', 'Hyunjin', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaHl1bmppbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNEOTc3MDYiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhCNUNGNiIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2h5dW5qaW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19oeXVuamluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oeXVuamluKSI+SEo8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+lnzwvdGV4dD4KPC9zdmc+', '@hynjinnnn', this)">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaHl1bmppbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNEOTc3MDYiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhCNUNGNiIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2h5dW5qaW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19oeXVuamluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oeXVuamluKSI+SEo8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+lnzwvdGV4dD4KPC9zdmc+" class="dm-member-avatar">
-                        <span class="dm-member-name">Hyunjin</span>
-                    </div>
-                    <div class="dm-member-item" onclick="selectDMChat('han', 'Han Jisung', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaGFuIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI1NjNFQiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDZCNkQ0IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImZfaGFuIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjQiIHN0ZERldmlhdGlvbj0iNiIgZmxvb2QtY29sb3I9IiMwMDAiIGZsb29kLW9wYWNpdHk9IjAuNiIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMTAwIiBmaWxsPSJ1cmwoI2dfaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oYW4pIj5KUzwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0MiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjI4IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6aYPC90ZXh0Pgo8L3N2Zz4=', '@_doolsetnet', this)">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaGFuIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI1NjNFQiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDZCNkQ0IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImZfaGFuIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjQiIHN0ZERldmlhdGlvbj0iNiIgZmxvb2QtY29sb3I9IiMwMDAiIGZsb29kLW9wYWNpdHk9IjAuNiIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMTAwIiBmaWxsPSJ1cmwoI2dfaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oYW4pIj5KUzwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0MiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjI4IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6aYPC90ZXh0Pgo8L3N2Zz4=" class="dm-member-avatar">
-                        <span class="dm-member-name">Han Jisung</span>
-                    </div>
-                    <div class="dm-member-item" onclick="selectDMChat('changbin', 'Changbin', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbmdiaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjREMyNjI2IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNTlFMEIiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9jaGFuZ2JpbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2NoYW5nYmluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuZ2JpbikiPkNCPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLfwn5CwPC90ZXh0Pgo8L3N2Zz4=', '@jutdwae', this)">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbmdiaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjREMyNjI2IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNTlFMEIiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9jaGFuZ2JpbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2NoYW5nYmluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuZ2JpbikiPkNCPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLfwn5CwPC90ZXh0Pgo8L3N2Zz4=" class="dm-member-avatar">
-                        <span class="dm-member-name">Changbin</span>
-                    </div>
-                    <div class="dm-member-item" onclick="selectDMChat('seungmin', 'Seungmin', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc2V1bmdtaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDI4NEM3IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzOEJERjgiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9zZXVuZ21pbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX3NldW5nbWluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9zZXVuZ21pbikiPlNNPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLY8L3RleHQ+Cjwvc3ZnPg==', '@miniverse.___', this)">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc2V1bmdtaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDI4NEM3IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzOEJERjgiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9zZXVuZ21pbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX3NldW5nbWluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9zZXVuZ21pbikiPlNNPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLY8L3RleHQ+Cjwvc3ZnPg==" class="dm-member-avatar">
-                        <span class="dm-member-name">Seungmin</span>
-                    </div>
-                    <div class="dm-member-item" onclick="selectDMChat('in', 'I.N', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUE1ODBDIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGOTczMTYiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9pbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2luKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9pbikiPklOPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpoo8L3RleHQ+Cjwvc3ZnPg==', '@i.2.n.8', this)">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUE1ODBDIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGOTczMTYiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9pbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2luKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9pbikiPklOPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpoo8L3RleHQ+Cjwvc3ZnPg==" class="dm-member-avatar">
-                        <span class="dm-member-name">I.N</span>
-                    </div>
-                </div>
-
-                <!-- DM CHAT AREA -->
-                <div class="dm-chat-area">
-                    <div class="dm-chat-header">
-                        <img id="dm-active-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+" class="dm-chat-avatar">
-                        <div>
-                            <div class="dm-chat-title" id="dm-active-title">Bang Chan <span class="verified-badge">☑️</span></div>
-                            <div class="dm-chat-status">🟢 Active Now · SKZ Leader</div>
-                        </div>
-                    </div>
-
-                    <div class="dm-chat-messages" id="dm-chat-box">
-                        <div class="chat-bubble incoming">
-                            <strong>Bang Chan (@gnabnahc):</strong><br>
-                            Hey Manager @gaerwenill! Thanks for checking in. We just finished track #3 recording. Do you have a second to review tomorrow's photoshoot timeline?
-                        </div>
-                    </div>
-
-                    <div class="dm-input-bar">
-                        <input type="text" id="dm-text-input" class="dm-input" placeholder="Message as @gaerwenill..." onkeypress="if(event.key==='Enter') sendDM()">
-                        <button class="dm-send-btn" onclick="sendDM()">Send</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 4: PROFILE -->
-        <div id="tab-profile" class="tab-content">
-            <div class="profile-container">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgOTAwIDMwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJfZ3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0YzFkOTUiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODMxODQzIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjE3MmEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0idXJsKCNiX2dyYWQpIi8+CiAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTUwIiByPSIxMDAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDUiLz4KICA8Y2lyY2xlIGN4PSI3NTAiIGN5PSIxNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4wNSIvPgogIDx0ZXh0IHg9IjQ1MCIgeT0iMTYwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iNDIiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNUUkFZIEtJRFMgSEVBRCBNQU5BR0VSPC90ZXh0Pgo8L3N2Zz4=" class="profile-banner">
-                <div class="profile-header">
-                    <div class="profile-avatar-wrapper">
-                        <img id="profile-main-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ2FlcndlbmlsbCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5MzMzRUEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0VDNDg5OSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2dhZXJ3ZW5pbGwiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19nYWVyd2VuaWxsKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9nYWVyd2VuaWxsKSI+R1c8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+RkTwvdGV4dD4KPC9zdmc+" class="profile-avatar">
-                        <div class="profile-cam-btn" onclick="document.getElementById('profile-upload').click()" title="Change Profile Photo">📷</div>
-                    </div>
-                    <div class="profile-name">Gaerwenill <span class="verified-badge">☑️</span></div>
-                    <div class="profile-handle">@gaerwenill</div>
-                    <div class="profile-bio">
-                        🧭 Official Head Manager of Stray Kids | JYP Entertainment<br>
-                        Managing world tours, production schedules & member care.
-                    </div>
-                    <div class="profile-stats">
-                        <div><span class="profile-stat-num">18.4K</span> Posts</div>
-                        <div><span class="profile-stat-num">4.2M</span> Followers</div>
-                        <div><span class="profile-stat-num">8</span> Following</div>
-                    </div>
-                </div>
-
-                <div style="padding:16px; font-weight:800; font-size:16px; border-bottom:1px solid #16181c;">
-                    Your Posts (@gaerwenill)
-                </div>
-                <div class="feed" id="user-posts-container">
-                    <div style="padding:20px; text-align:center; color:#64748b; font-size:14px;">
-                        You haven't posted any updates yet today. Use the Feed tab to post!
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BOTTOM NAV -->
-        <div class="bottom-nav">
-            <a class="nav-item active" id="nav-feed" onclick="switchTab('feed')"><span class="nav-icon">🏠</span><span>Feed</span></a>
-            <a class="nav-item" id="nav-stories" onclick="switchTab('stories')"><span class="nav-icon">📸</span><span>Stories</span></a>
-            <a class="nav-item" id="nav-dms" onclick="switchTab('dms')"><span class="nav-icon">💬</span><span>DMs</span></a>
-            <a class="nav-item" id="nav-profile" onclick="switchTab('profile')"><span class="nav-icon">👤</span><span>Profile</span></a>
-        </div>
+<div class="app-container">
+    <!-- TOP HEADER -->
+    <div class="top-header">
+        <div class="app-logo">⭐ STATUS <span style="font-size:12px; background:#a855f7; color:#fff; padding:2px 6px; border-radius:8px;">SKZ</span></div>
+        <img id="userHeaderAvatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ3ciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2MzYWVkIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYzQ4OTkiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2d3KSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+nrTwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWFuYWdlcjwvdGV4dD4KPC9zdmc+" class="header-avatar" onclick="switchTab('profileTab')">
     </div>
 
-    <!-- FULLSCREEN STORY MODAL -->
-    <div class="story-modal" id="story-modal">
-        <div class="story-modal-content">
-            <div class="story-progress-bar"><div class="story-progress-fill" id="story-timer"></div></div>
-            <div class="story-modal-header">
-                <div class="story-modal-user">
-                    <img id="modal-story-avatar" src="" class="story-modal-avatar">
-                    <div>
-                        <div id="modal-story-title" class="story-modal-title">Bang Chan</div>
-                        <div id="modal-story-time" class="story-modal-time">2h ago</div>
-                    </div>
+    <!-- STORIES BAR -->
+    <div class="stories-container" id="storiesBar"></div>
+
+    <!-- TAB 1: FEED -->
+    <div id="feedTab" class="tab-content active">
+        <div class="create-post-box">
+            <img id="userCreatePostAvatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ3ciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2MzYWVkIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYzQ4OTkiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2d3KSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+nrTwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWFuYWdlcjwvdGV4dD4KPC9zdmc+" class="create-post-avatar">
+            <div class="create-post-input-area">
+                <textarea id="newPostText" class="create-post-textarea" placeholder="What's happening with Stray Kids? Post as @gaerwenill..."></textarea>
+                <div id="postImagePreview" style="display:none; position:relative; margin-bottom:8px;">
+                    <img id="postPreviewImg" src="" style="width:100%; max-height:200px; object-fit:cover; border-radius:12px;">
+                    <button onclick="clearPostImage()" style="position:absolute; top:6px; right:6px; background:rgba(0,0,0,0.7); color:#fff; border:none; border-radius:50%; width:24px; height:24px; cursor:pointer;">✕</button>
                 </div>
-                <button class="story-close-btn" onclick="closeStory()">✕</button>
+                <div class="create-post-actions">
+                    <label class="attach-btn">
+                        📷 Add Photo
+                        <input type="file" accept="image/*" style="display:none;" onchange="handlePostImageUpload(event)">
+                    </label>
+                    <button class="post-btn" onclick="createNewPost()">Post</button>
+                </div>
             </div>
-            <div class="story-modal-body">
-                <img id="modal-story-img" src="" class="story-modal-img">
-            </div>
-            <div class="story-modal-footer">
-                <input type="text" id="story-reply-input" class="story-input" placeholder="Reply to story as @gaerwenill...">
-                <button class="story-send-btn" onclick="sendStoryReply()">Reply</button>
+        </div>
+        <div class="feed" id="mainFeed"></div>
+    </div>
+
+    <!-- TAB 2: SEARCH / EXPLORE -->
+    <div id="searchTab" class="tab-content">
+        <div style="padding: 16px;">
+            <input type="text" placeholder="🔍 Search STAYs, posts, trends..." style="width:100%; background:#1e293b; border:1px solid #334155; border-radius:20px; padding:12px 18px; color:#fff; font-size:14px; outline:none; margin-bottom:16px;">
+            <h3 style="font-size:16px; font-weight:800; color:#fff; margin-bottom:12px;">🔥 Trending Topics</h3>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+                <div style="background:#0b0e14; padding:12px; border-radius:12px; border:1px solid #16181c;">
+                    <div style="font-size:12px; color:#64748b;">K-POP • Trending Worldwide</div>
+                    <div style="font-weight:800; color:#fff; margin-top:2px;">#ManagerGaerwenill</div>
+                    <div style="font-size:12px; color:#a855f7; margin-top:2px;">48.2K posts</div>
+                </div>
+                <div style="background:#0b0e14; padding:12px; border-radius:12px; border:1px solid #16181c;">
+                    <div style="font-size:12px; color:#64748b;">Stray Kids • Trending</div>
+                    <div style="font-weight:800; color:#fff; margin-top:2px;">#SKZWorldTour2026</div>
+                    <div style="font-size:12px; color:#a855f7; margin-top:2px;">124.9K posts</div>
+                </div>
+                <div style="background:#0b0e14; padding:12px; border-radius:12px; border:1px solid #16181c;">
+                    <div style="font-size:12px; color:#64748b;">Music • Trending</div>
+                    <div style="font-weight:800; color:#fff; margin-top:2px;">5-STAR 10M Sales</div>
+                    <div style="font-size:12px; color:#a855f7; margin-top:2px;">89.1K posts</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        let myAvatarUrl = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ2FlcndlbmlsbCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5MzMzRUEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0VDNDg5OSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2dhZXJ3ZW5pbGwiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19nYWVyd2VuaWxsKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9nYWVyd2VuaWxsKSI+R1c8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+RkTwvdGV4dD4KPC9zdmc+";
-        let currentPostImg = "";
-        let activeDMKey = "chan";
+    <!-- TAB 3: DMS -->
+    <div id="dmTab" class="tab-content">
+        <div class="dm-layout">
+            <div class="dm-sidebar" id="dmSidebar"></div>
+            <div class="dm-chat-area">
+                <div class="dm-chat-header" id="dmHeader">
+                    <img id="activeDMAvatar" src="" class="dm-chat-avatar">
+                    <div>
+                        <div class="dm-chat-title" id="activeDMTitle">Bang Chan</div>
+                        <div class="dm-chat-status">● Active Now</div>
+                    </div>
+                </div>
+                <div class="dm-chat-messages" id="dmMessages"></div>
+                <div class="dm-input-bar">
+                    <input type="text" id="dmInput" class="dm-input" placeholder="Message..." onkeypress="if(event.key==='Enter') sendDM()">
+                    <button class="dm-send-btn" onclick="sendDM()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        const STORY_DATA = {
-            'gaerwenill': { title: "Gaerwenill (@gaerwenill)", avatar: myAvatarUrl, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgOTAwIDMwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJfZ3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0YzFkOTUiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjODMxODQzIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjE3MmEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0idXJsKCNiX2dyYWQpIi8+CiAgPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTUwIiByPSIxMDAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDUiLz4KICA8Y2lyY2xlIGN4PSI3NTAiIGN5PSIxNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4wNSIvPgogIDx0ZXh0IHg9IjQ1MCIgeT0iMTYwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iNDIiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNUUkFZIEtJRFMgSEVBRCBNQU5BR0VSPC90ZXh0Pgo8L3N2Zz4=", time: "10m ago" },
-            'chan': { title: "Bang Chan (@gnabnahc)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/wn46b77iPIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJlMTA2NSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYxNzJhIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc19ncmFkX/CfjpvvuI8pIi8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIzNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzgwIiBmb250LXNpemU9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+Om++4jzwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+M1JBQ0hBIFNUVURJTzwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjY5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjIyIiBmaWxsPSIjZTJlOGYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MYXRlIE5pZ2h0IFByb2R1Y2luZyBTZXNzaW9uIPCfjqc8L3RleHQ+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjcyMCIgeDI9IjUwMCIgeTI9IjcyMCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC4zIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSIzMDAiIHk9Ijc3MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNTAwIiBmb250LXNpemU9IjE4IiBmaWxsPSIjY2JkNWUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Xb3JraW5nIG9uIHRyYWNrICMzIGZvciBTVEFZcy4uLjwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjgxMCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjYTg1NWY3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVFJBWSBLSURTIE9GRklDSUFMIFNUT1JZIPCfp608L3RleHQ+Cjwvc3ZnPg==", time: "1h ago" },
-            'felix': { title: "Felix (@yong.lixx)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmVsaXgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDNGNUUiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9mZWxpeCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2ZlbGl4KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9mZWxpeCkiPkZMPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKU8L3RleHQ+Cjwvc3ZnPg==", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/wn42qIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg4MTMzNyIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGMwNTE5IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc19ncmFkX/CfjaopIi8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIzNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzgwIiBmb250LXNpemU9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+NqjwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QkFLSU5HIERBWSDwn42qPC90ZXh0PgogIDx0ZXh0IHg9IjMwMCIgeT0iNjkwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkhvbWVtYWRlIENob2NvbGF0ZSBCcm93bmllczwvdGV4dD4KICA8bGluZSB4MT0iMTAwIiB5MT0iNzIwIiB4Mj0iNTAwIiB5Mj0iNzIwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjMiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iNzcwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI1MDAiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNjYmQ1ZTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1hZGUgd2l0aCBsb3ZlIGZvciBNYW5hZ2VyIEBnYWVyd2VuaWxsITwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjgxMCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjYTg1NWY3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVFJBWSBLSURTIE9GRklDSUFMIFNUT1JZIPCfp608L3RleHQ+Cjwvc3ZnPg==", time: "2h ago" },
-            'leeknow': { title: "Lee Know (@t.leeknow)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfbGVla25vdyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwNTk2NjkiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzEwQjk4MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2xlZWtub3ciIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19sZWVrbm93KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9sZWVrbm93KSI+TEs8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QsTwvdGV4dD4KPC9zdmc+", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/wn5CxIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzA2NGUzYiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDIyYzIyIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc19ncmFkX/CfkLEpIi8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIzNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzgwIiBmb250LXNpemU9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QsTwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q0FUIENPUk5FUiDwn5CxPC90ZXh0PgogIDx0ZXh0IHg9IjMwMCIgeT0iNjkwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNvb25pLCBEb29uZ2kgJiBEb3JpIFNheXMgSGkhPC90ZXh0PgogIDxsaW5lIHgxPSIxMDAiIHkxPSI3MjAiIHgyPSI1MDAiIHkyPSI3MjAiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iMzAwIiB5PSI3NzAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjUwMCIgZm9udC1zaXplPSIxOCIgZmlsbD0iI2NiZDVlMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RGFuY2UgcHJhY3RpY2UgZG9uZSwgY2F0IHRpbWUgbm93ITwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjgxMCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjYTg1NWY3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVFJBWSBLSURTIE9GRklDSUFMIFNUT1JZIPCfp608L3RleHQ+Cjwvc3ZnPg==", time: "3h ago" },
-            'hyunjin': { title: "Hyunjin (@hynjinnnn)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaHl1bmppbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNEOTc3MDYiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhCNUNGNiIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2h5dW5qaW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19oeXVuamluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oeXVuamluKSI+SEo8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+lnzwvdGV4dD4KPC9zdmc+", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/wn46oIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzc4MzUwZiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNDUxYTAzIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc19ncmFkX/CfjqgpIi8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIzNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzgwIiBmb250LXNpemU9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+OqDwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QVJUIENBTlZBUyDwn46oPC90ZXh0PgogIDx0ZXh0IHg9IjMwMCIgeT0iNjkwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ldyBQYWludGluZyBGaW5pc2hlZDwvdGV4dD4KICA8bGluZSB4MT0iMTAwIiB5MT0iNzIwIiB4Mj0iNTAwIiB5Mj0iNzIwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjMiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iNzcwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI1MDAiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNjYmQ1ZTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRyYW1hdGljIGFydCBzZXNzaW9uIGF0IDIgQU0uPC90ZXh0PgogIDx0ZXh0IHg9IjMwMCIgeT0iODEwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNhODU1ZjciIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNUUkFZIEtJRFMgT0ZGSUNJQUwgU1RPUlkg8J+nrTwvdGV4dD4KPC9zdmc+", time: "4h ago" },
-            'han': { title: "Han Jisung (@_doolsetnet)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaGFuIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI1NjNFQiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDZCNkQ0IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImZfaGFuIiB4PSItMjAlIiB5PSItMjAlIiB3aWR0aD0iMTQwJSIgaGVpZ2h0PSIxNDAlIj4KICAgICAgPGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjQiIHN0ZERldmlhdGlvbj0iNiIgZmxvb2QtY29sb3I9IiMwMDAiIGZsb29kLW9wYWNpdHk9IjAuNiIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMTAwIiBmaWxsPSJ1cmwoI2dfaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9oYW4pIj5KUzwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0MiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjI4IiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn6aYPC90ZXh0Pgo8L3N2Zz4=", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/imJUiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWUzYThhIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxNzI1NTQiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iNjAwIiBoZWlnaHQ9IjkwMCIgZmlsbD0idXJsKCNzX2dyYWRf4piVKSIvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjM1MCIgcj0iMTgwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA4Ii8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxMjAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMTIiLz4KICA8dGV4dCB4PSIzMDAiIHk9IjM4MCIgZm9udC1zaXplPSIxMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKYlTwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U09OR1dSSVRJTkcg8J+OtTwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjY5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjIyIiBmaWxsPSIjZTJlOGYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4zIFNvbmdzIFdyaXR0ZW4gVG9uaWdodDwvdGV4dD4KICA8bGluZSB4MT0iMTAwIiB5MT0iNzIwIiB4Mj0iNTAwIiB5Mj0iNzIwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjMiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iNzcwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI1MDAiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNjYmQ1ZTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNoZWVzZWNha2UgaW5zcGlyYXRpb24gaGl0IGhhcmQhPC90ZXh0PgogIDx0ZXh0IHg9IjMwMCIgeT0iODEwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiNhODU1ZjciIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNUUkFZIEtJRFMgT0ZGSUNJQUwgU1RPUlkg8J+nrTwvdGV4dD4KPC9zdmc+", time: "5h ago" },
-            'changbin': { title: "Changbin (@jutdwae)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbmdiaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjREMyNjI2IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNTlFMEIiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9jaGFuZ2JpbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2NoYW5nYmluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuZ2JpbikiPkNCPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLfwn5CwPC90ZXh0Pgo8L3N2Zz4=", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/wn5KqIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdmMWQxZCIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNDUwYTBhIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc19ncmFkX/CfkqopIi8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIzNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzgwIiBmb250LXNpemU9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+SqjwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SlVUREFFIEdZTSDwn4+L77iP4oCN4pmC77iPPC90ZXh0PgogIDx0ZXh0IHg9IjMwMCIgeT0iNjkwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkxhdGUgTmlnaHQgQmljZXAgR2FpbnM8L3RleHQ+CiAgPGxpbmUgeDE9IjEwMCIgeTE9IjcyMCIgeDI9IjUwMCIgeTI9IjcyMCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utb3BhY2l0eT0iMC4zIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSIzMDAiIHk9Ijc3MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNTAwIiBmb250LXNpemU9IjE4IiBmaWxsPSIjY2JkNWUxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Qcm90ZWluIHNoYWtlIGJyZWFrISBOZXZlciBnaXZlIHVwITwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjgxMCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjYTg1NWY3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVFJBWSBLSURTIE9GRklDSUFMIFNUT1JZIPCfp608L3RleHQ+Cjwvc3ZnPg==", time: "6h ago" },
-            'seungmin': { title: "Seungmin (@miniverse.___)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc2V1bmdtaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDI4NEM3IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzOEJERjgiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9zZXVuZ21pbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX3NldW5nbWluKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9zZXVuZ21pbikiPlNNPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLY8L3RleHQ+Cjwvc3ZnPg==", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/wn46Z77iPIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAzNjlhMSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDgyZjQ5IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc19ncmFkX/CfjpnvuI8pIi8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIzNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzgwIiBmb250LXNpemU9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+Ome+4jzwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Vk9DQUwgQk9PVEgg8J+QtjwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjY5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNzAwIiBmb250LXNpemU9IjIyIiBmaWxsPSIjZTJlOGYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5IaWdoIE5vdGUgV2FybXVwIENvbXBsZXRlPC90ZXh0PgogIDxsaW5lIHgxPSIxMDAiIHkxPSI3MjAiIHgyPSI1MDAiIHkyPSI3MjAiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLW9wYWNpdHk9IjAuMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iMzAwIiB5PSI3NzAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjUwMCIgZm9udC1zaXplPSIxOCIgZmlsbD0iI2NiZDVlMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVhc2luZyBDaGFuZ2JpbiBoeXVuZyBhbGwgZGF5LjwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjgxMCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjYTg1NWY3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVFJBWSBLSURTIE9GRklDSUFMIFNUT1JZIPCfp608L3RleHQ+Cjwvc3ZnPg==", time: "7h ago" },
-            'in': { title: "I.N (@i.2.n.8)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUE1ODBDIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGOTczMTYiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9pbiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2luKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9pbikiPklOPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfpoo8L3RleHQ+Cjwvc3ZnPg==", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/wn5GUIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdjMmQxMiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNDMxNDA3IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc19ncmFkX/CfkZQpIi8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIzNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzgwIiBmb250LXNpemU9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+RlDwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T09URCBTVFlMRSDwn6aKPC90ZXh0PgogIDx0ZXh0IHg9IjMwMCIgeT0iNjkwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1ha25hZSBGYXNoaW9uIEZvciBTY2hlZHVsZTwvdGV4dD4KICA8bGluZSB4MT0iMTAwIiB5MT0iNzIwIiB4Mj0iNTAwIiB5Mj0iNzIwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjMiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iNzcwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI1MDAiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNjYmQ1ZTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkh5dW5ncyBib3VnaHQgbWUgZGlubmVyIGFnYWluITwvdGV4dD4KICA8dGV4dCB4PSIzMDAiIHk9IjgxMCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjE2IiBmaWxsPSIjYTg1NWY3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVFJBWSBLSURTIE9GRklDSUFMIFNUT1JZIPCfp608L3RleHQ+Cjwvc3ZnPg==", time: "8h ago" },
-            'dispatch': { title: "Dispatch Official (@kpop_dispatch)", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZGlzcGF0Y2giIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMTE4MjciIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9kaXNwYXRjaCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2Rpc3BhdGNoKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9kaXNwYXRjaCkiPkQ8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+aqDwvdGV4dD4KPC9zdmc+", img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iOTAwIiB2aWV3Qm94PSIwIDAgNjAwIDkwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNfZ3JhZF/wn5OwIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ1MGEwYSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjYwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9InVybCgjc19ncmFkX/Cfk7ApIi8+CiAgPGNpcmNsZSBjeD0iMzAwIiBjeT0iMzUwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDgiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIzNTAiIHI9IjEyMCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4xMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzgwIiBmb250LXNpemU9IjEyMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+TsDwvdGV4dD4KICA8cmVjdCB4PSI0MCIgeT0iNTgwIiB3aWR0aD0iNTIwIiBoZWlnaHQ9IjI2MCIgcng9IjI0IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIwLjY1Ii8+CiAgPHRleHQgeD0iMzAwIiB5PSI2NDAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RElTUEFUQ0ggRVhDTFVTSVZFIPCfmqg8L3RleHQ+CiAgPHRleHQgeD0iMzAwIiB5PSI2OTAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyMiIgZmlsbD0iI2UyZThmMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SllQIENlbnRlciBBcnJpdmFsIFBob3RvczwvdGV4dD4KICA8bGluZSB4MT0iMTAwIiB5MT0iNzIwIiB4Mj0iNTAwIiB5Mj0iNzIwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjMiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjMwMCIgeT0iNzcwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI1MDAiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNjYmQ1ZTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1hbmFnZXIgQGdhZXJ3ZW5pbGwgc3BvdHRlZCB3aXRoIFNLWiE8L3RleHQ+CiAgPHRleHQgeD0iMzAwIiB5PSI4MTAiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIxNiIgZmlsbD0iI2E4NTVmNyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U1RSQVkgS0lEUyBPRkZJQ0lBTCBTVE9SWSDwn6etPC90ZXh0Pgo8L3N2Zz4=", time: "9h ago" }
-        };
+    <!-- TAB 4: PROFILE -->
+    <div id="profileTab" class="tab-content">
+        <div class="profile-container">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfNGMxZDk1IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRjMWQ5NSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZGIyNzc3IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzRjMWQ5NSkiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfp608L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNLWiBXT1JMRCBUT1VSIDIwMjY8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI2MDAiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsIEFubm91bmNlbWVudCDigKIgSllQIEVudGVydGFpbm1lbnQ8L3RleHQ+Cjwvc3ZnPg==" class="profile-banner">
+            <div class="profile-header">
+                <div class="profile-avatar-wrapper">
+                    <img id="userProfileAvatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ3ciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2MzYWVkIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYzQ4OTkiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2d3KSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+nrTwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWFuYWdlcjwvdGV4dD4KPC9zdmc+" class="profile-avatar">
+                    <label class="profile-cam-btn">
+                        📷
+                        <input type="file" accept="image/*" style="display:none;" onchange="handleProfilePhotoUpload(event)">
+                    </label>
+                </div>
+                <div class="profile-name">Gaerwenill <span class="verified-badge">✔</span></div>
+                <div class="profile-handle">@gaerwenill</div>
+                <div class="profile-bio">🧭 Head Manager of Stray Kids @ JYP Entertainment | Protecting SKZ & STAY! 💖✨</div>
+                <div class="profile-stats">
+                    <div><span class="profile-stat-num">8</span> Following</div>
+                    <div><span class="profile-stat-num">2.4M</span> Followers</div>
+                    <div><span class="profile-stat-num">⚡ Unlimited</span> Energy</div>
+                </div>
+            </div>
+            <div style="padding:12px 16px; font-weight:800; color:#a855f7; border-bottom:1px solid #16181c;">User Posts</div>
+            <div id="userProfileFeed"></div>
+        </div>
+    </div>
 
-        const DM_RESPONSES = {
-            'chan': ["I got your message @gaerwenill! I will make sure the rest of the members rest before tomorrow's practice. Thanks for taking care of us! 🐺", "Thanks @gaerwenill! Really appreciate your guidance as always. See you at the studio in 20 minutes!", "Sounds perfect @gaerwenill. Seungmin and Lee Know are just finishing up dinner and we'll head over."],
-            'felix': ["Manager @gaerwenill! I saved 3 brownies for you in the break room! Hope you like them! ✨🍪", "Thank you @gaerwenill! I'm practicing my vocal lines right now. See you soon! ❤️", "Yay! Thanks @gaerwenill! Stay warm today!"],
-            'leeknow': ["Did Sooni approve this message @gaerwenill? 🐱", "Thanks @gaerwenill. Now please order Korean BBQ for dinner. 🥩", "Dance rehearsal finished. Legs are fine, patience is not. 😏"],
-            'hyunjin': ["The aesthetic for tomorrow's photoshoot is so amazing @gaerwenill! 🎨", "Kami bit my sock again 😭 Manager @gaerwenill help me!", "Thank you @gaerwenill! See you at rehearsal!"],
-            'han': ["I wrote 2 new songs during lunch break! You're welcome @gaerwenill! 🎵", "Can we order cheesecake for dinner? For musical inspiration obviously. 🍰", "Thanks Manager @gaerwenill!!"],
-            'changbin': ["JUTDAE! We do things with conviction @gaerwenill! 💪🔥", "Did you see my bicep gains today Manager?! Protein time!", "3RACHA ready to record! Let's go!"],
-            'seungmin': ["Vocal warmup complete @gaerwenill! Ready for comeback recording 🐶", "Changbin hyung is being noisy again Manager...", "Day 1290 of teasing Changbin hyung. Going great."],
-            'in': ["Look at my OOTD for today Manager @gaerwenill! 😎", "The hyungs bought me dinner again. Maknae wins! 🥖", "Thanks @gaerwenill! See you soon!"]
-        };
+    <!-- BOTTOM NAV -->
+    <div class="bottom-nav">
+        <div class="nav-item active" id="navFeed" onclick="switchTab('feedTab')">
+            <span class="nav-icon">🏠</span> Feed
+        </div>
+        <div class="nav-item" id="navSearch" onclick="switchTab('searchTab')">
+            <span class="nav-icon">🔍</span> Explore
+        </div>
+        <div class="nav-item" id="navDMs" onclick="switchTab('dmTab')">
+            <span class="nav-icon">💬</span> DMs
+        </div>
+        <div class="nav-item" id="navProfile" onclick="switchTab('profileTab')">
+            <span class="nav-icon">👤</span> Profile
+        </div>
+    </div>
+</div>
 
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            document.getElementById('tab-' + tabName).classList.add('active');
-            document.getElementById('nav-' + tabName).classList.add('active');
+<!-- STORY MODAL -->
+<div class="story-modal" id="storyModal">
+    <div class="story-modal-content">
+        <div class="story-progress-bar"><div class="story-progress-fill" id="storyFill"></div></div>
+        <div class="story-modal-header">
+            <div class="story-modal-user">
+                <img id="storyModalAvatar" src="" class="story-modal-avatar">
+                <div>
+                    <div class="story-modal-title" id="storyModalTitle">Bang Chan</div>
+                    <div class="story-modal-time">2h ago</div>
+                </div>
+            </div>
+            <button class="story-close-btn" onclick="closeStoryModal()">✕</button>
+        </div>
+        <div class="story-modal-body">
+            <img id="storyModalImg" src="" class="story-modal-img">
+        </div>
+        <div class="story-modal-footer">
+            <input type="text" id="storyReplyInput" class="story-input" placeholder="Reply to story...">
+            <button class="story-send-btn" onclick="sendStoryReply()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let myAvatar = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZ3ciIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2MzYWVkIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYzQ4OTkiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2d3KSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+nrTwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWFuYWdlcjwvdGV4dD4KPC9zdmc+";
+    let pendingPostImg = null;
+
+    const BOTS = {
+        "bangchan": { name: "Bang Chan", handle: "@gnabnahc", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfYmMiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWUzYThhIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzYjgyZjYiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2JjKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+OpzwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QmFuZyBDaGFuPC90ZXh0Pgo8L3N2Zz4=", verified: true, role: "member" },
+        "leeknow": { name: "Lee Know", handle: "@t.leeknowsaurus", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfbGsiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDY1ZjQ2IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMGI5ODEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2xrKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QsTwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TGVlIEtub3c8L3RleHQ+Cjwvc3ZnPg==", verified: true, role: "member" },
+        "changbin": { name: "Changbin", handle: "@jutdwae", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2IiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOTkxYjFiIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZjQ0NDQiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2NiKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+SqjwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q2hhbmdiaW48L3RleHQ+Cjwvc3ZnPg==", verified: true, role: "member" },
+        "hyunjin": { name: "Hyunjin", handle: "@hynjinnnn", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaGoiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNTgxYzg3IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhODU1ZjciIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2hqKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+OqDwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SHl1bmppbjwvdGV4dD4KPC9zdmc+", verified: true, role: "member" },
+        "han": { name: "Han Jisung", handle: "@_doolsetnet", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaGFuIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg1NGQwZSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWFiMzA4IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIHJ4PSIxMDAiIGZpbGw9InVybCgjZ19oYW4pIi8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iNzIiIHI9IjM2IiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHBhdGggZD0iTSAzMCwxNzUgQyAzMCwxMjIgMTcwLDEyMiAxNzAsMTc1IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiLz4KICA8dGV4dCB4PSIxMDAiIHk9IjkyIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7wn461PC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQ2IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5IYW48L3RleHQ+Cjwvc3ZnPg==", verified: true, role: "member" },
+        "felix": { name: "Felix", handle: "@yong.lixx", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmwiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOWEzNDEyIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmOTczMTYiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2ZsKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QpTwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RmVsaXg8L3RleHQ+Cjwvc3ZnPg==", verified: true, role: "member" },
+        "seungmin": { name: "Seungmin", handle: "@miniverse.___", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc20iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTY0ZTYzIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwNmI2ZDQiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX3NtKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QtjwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U2V1bmdtaW48L3RleHQ+Cjwvc3ZnPg==", verified: true, role: "member" },
+        "in": { name: "I.N", handle: "@i.2.n.8", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfaW4iIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjODMxODQzIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYzQ4OTkiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX2luKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+mijwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SS5OPC90ZXh0Pgo8L3N2Zz4=", verified: true, role: "member" },
+        "dispatch": { name: "Dispatch Official", handle: "@kpop_dispatch", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZGlzcCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNiOTFjMWMiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RjMjYyNiIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iMTAwIiBmaWxsPSJ1cmwoI2dfZGlzcCkiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzYiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiLz4KICA8cGF0aCBkPSJNIDMwLDE3NSBDIDMwLDEyMiAxNzAsMTIyIDE3MCwxNzUgWiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iOTIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfmqg8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRpc3BhdGNoPC90ZXh0Pgo8L3N2Zz4=", verified: true, role: "news" },
+        "stay_world": { name: "STAY World Updates", handle: "@stay_updates", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc3RfdyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0YzFkOTUiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNWNmNiIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iMTAwIiBmaWxsPSJ1cmwoI2dfc3RfdykiLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzYiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiLz4KICA8cGF0aCBkPSJNIDMwLDE3NSBDIDMwLDEyMiAxNzAsMTIyIDE3MCwxNzUgWiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDx0ZXh0IHg9IjEwMCIgeT0iOTIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjJA8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNUQVkgTmV3czwvdGV4dD4KPC9zdmc+", verified: false, role: "stay" },
+        "stay_felix": { name: "Lixxie Brownies 🍪", handle: "@felix_sunshine_stay", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc3RfZmwiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOWEzNDEyIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmYjkyM2MiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX3N0X2ZsKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+NqjwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TGl4eGllIFNUQVk8L3RleHQ+Cjwvc3ZnPg==", verified: false, role: "stay" },
+        "stay_chan": { name: "Chanie's Room Live 🎧", handle: "@chan_room_official", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc3RfY2giIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWU0MGFmIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2MGE1ZmEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX3N0X2NoKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+OpzwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjE0NiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q2hhbiBMaXZlPC90ZXh0Pgo8L3N2Zz4=", verified: false, role: "stay" },
+        "stay_5star": { name: "SKZ 5-STAR Worldwide 🧭", handle: "@stay_forever_5star", avatar: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imdfc3RfNXMiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNmIyMWE4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjMDg0ZmMiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcng9IjEwMCIgZmlsbD0idXJsKCNnX3N0XzVzKSIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjcyIiByPSIzNiIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0eT0iMC4yMiIvPgogIDxwYXRoIGQ9Ik0gMzAsMTc1IEMgMzAsMTIyIDE3MCwxMjIgMTcwLDE3NSBaIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjIyIi8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI0NCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4q2QPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQ2IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41LVNUQVIgRmFuczwvdGV4dD4KPC9zdmc+", verified: false, role: "stay" }
+    };
+
+    const BOT_RESPONSES = {
+        "bangchan": [
+            "Thank you @gaerwenill! We will work hard for STAY! ❤️",
+            "Late night in studio... please bring iced americano @gaerwenill! ☕",
+            "STAYs are going to love this update! 👍✨",
+            "Chanie's Room tonight? I need to tell STAY how awesome @gaerwenill is!"
+        ],
+        "felix": [
+            "Baked homemade brownies for @gaerwenill & the boys! 🍪",
+            "Hope everyone stays warm today! ☀️❤️",
+            "Deep voice practice done! Ready to shake the stage! 🔊",
+            "Manager @gaerwenill is the best! Thank you for taking care of us!"
+        ],
+        "leeknow": [
+            "Did Sooni, Doongi, and Dori approve this post @gaerwenill? 🐱",
+            "Manager @gaerwenill, where is my pudding?",
+            "Dancing 8 hours today. My legs are fine, my patience is not. 😏",
+            "Nice post @gaerwenill. Now buy us meat. 🥩"
+        ],
+        "changbin": [
+            "JUTDAE! We do things with conviction! 💪🔥",
+            "Did you see my bicep gains in the new photoshoot @gaerwenill?!",
+            "3RACHA in the house! 🎵",
+            "Protein shake break over, back to recording!"
+        ],
+        "hyunjin": [
+            "The aesthetic of this schedule is amazing @gaerwenill! 🎨✨",
+            "KAMI BIT MY SOCK AGAIN 😭 @gaerwenill help me!",
+            "Dramatic? Me?! I am simply expressing my artistic soul! 🎭"
+        ],
+        "han": [
+            "I wrote 3 songs in my sleep last night! You're welcome @gaerwenill! 🎵",
+            "Can we order cheesecake for lunch? For lyrical inspiration obviously.",
+            "STAY!! I missed you guys so much!"
+        ],
+        "seungmin": [
+            "Vocal practice finished! Ready for comeback @gaerwenill. 🐶",
+            "@gaerwenill, Changbin hyung is being noisy during my nap.",
+            "Day 1290 of teasing Changbin hyung. Going great."
+        ],
+        "in": [
+            "Look at my OOTD for today's schedule @gaerwenill! 😎👔",
+            "The hyungs bought me dinner again. Maknae wins! 🥖",
+            "Maknae energy loaded! ⚡"
+        ],
+        "stay_world": [
+            "WE LOVE YOU @gaerwenill! THANK YOU FOR PROTECTING OUR BOYS! 😭💖",
+            "TRENDING #1 WORLDWIDE: #ManagerGaerwenill #StrayKidsNextEra!",
+            "STAYs let's stream harder for SKZ!!"
+        ],
+        "stay_felix": [
+            "FELIX AND MANAGER GAERWENILL INTERACTION 😭 I'M CRYING HE'S SO SWEET!",
+            "Baking brownies for the team is so Felix core 🥺❤️"
+        ],
+        "stay_chan": [
+            "CHAN CONFIRMED IT ON LIVE! Best manager ever!! 🎧🔥",
+            "3RACHA is cooking up something legendary!"
+        ],
+        "stay_5star": [
+            "STRAY KIDS EVERYWHERE ALL AROUND THE WORLD! 🧭✨",
+            "10M sales milestone unlocked! SKZ paved the way!"
+        ]
+    };
+
+    const STORIES = [
+        { key: "bangchan", name: "Bang Chan", handle: "@gnabnahc", avatar: BOTS.bangchan.avatar, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfMWUzYThhIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlM2E4YSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjU2M2ViIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzFlM2E4YSkiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjqc8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjNSQUNIQSBTVFVESU8gU0VTU0lPTjwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjMyMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2UyZThmMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TGF0ZSBOaWdodCBQcm9kdWNpbmcg4oCiIE5ldyBBbGJ1bTwvdGV4dD4KPC9zdmc+", caption: "Late night producing in the studio... 🎧" },
+        { key: "felix", name: "Felix", handle: "@yong.lixx", avatar: BOTS.felix.avatar, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfOWEzNDEyIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzlhMzQxMiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWE1ODBjIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzlhMzQxMikiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjao8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZFTElYIEhPTUVNQURFIEJST1dOSUVTPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNjAwIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZTJlOGYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CYWtlZCB3aXRoIGxvdmUgZm9yIE1hbmFnZXIgJiBTVEFZIOKdpO+4jzwvdGV4dD4KPC9zdmc+", caption: "Fresh cookies for @gaerwenill and STAY! 🍪" },
+        { key: "leeknow", name: "Lee Know", handle: "@t.leeknowsaurus", avatar: BOTS.leeknow.avatar, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfMDY1ZjQ2IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzA2NWY0NiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDU5NjY5IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzA2NWY0NikiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkLE8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNPT05JLCBET09OR0ksIERPUkk8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI2MDAiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFwcHJvdmVkIFRvZGF5IERhbmNlIFJlaGVhcnNhbDwvdGV4dD4KPC9zdmc+", caption: "Sooni says hi! 🐱" },
+        { key: "hyunjin", name: "Hyunjin", handle: "@hynjinnnn", avatar: BOTS.hyunjin.avatar, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfNTgxYzg3IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzU4MWM4NyIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOTMzM2VhIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzU4MWM4NykiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjqg8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkhZVU5KSU4gQVJUIENBTlZBUzwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjMyMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2UyZThmMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+T3JpZ2luYWwgUGFpbnRpbmcgRmluaXNoZWQg4oCiIFN0dWRpbyBBZXN0aGV0aWM8L3RleHQ+Cjwvc3ZnPg==", caption: "New painting finished 🎨" },
+        { key: "changbin", name: "Changbin", handle: "@jutdwae", avatar: BOTS.changbin.avatar, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfNGMxZDk1IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRjMWQ5NSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZGIyNzc3IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzRjMWQ5NSkiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfp608L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNLWiBXT1JMRCBUT1VSIDIwMjY8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI2MDAiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsIEFubm91bmNlbWVudCDigKIgSllQIEVudGVydGFpbm1lbnQ8L3RleHQ+Cjwvc3ZnPg==", caption: "Post-workout protein break! 💪" },
+        { key: "han", name: "Han Jisung", handle: "@_doolsetnet", avatar: BOTS.han.avatar, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfMWUzYThhIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlM2E4YSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjU2M2ViIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzFlM2E4YSkiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjqc8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjNSQUNIQSBTVFVESU8gU0VTU0lPTjwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjMyMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2UyZThmMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TGF0ZSBOaWdodCBQcm9kdWNpbmcg4oCiIE5ldyBBbGJ1bTwvdGV4dD4KPC9zdmc+", caption: "Writing 3RACHA beat #102 🎵" },
+        { key: "seungmin", name: "Seungmin", handle: "@miniverse.___", avatar: BOTS.seungmin.avatar, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfODU0ZDBlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg1NGQwZSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjY2E4YTA0IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzg1NGQwZSkiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfj4Y8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwLDAwMCwwMDAgU0FMRVMgTUlMRVNUT05FPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNjAwIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZTJlOGYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj41LVNUQVIgR2xvYmFsIFJlY29yZCDigKIgU0taIHggU1RBWTwvdGV4dD4KPC9zdmc+", caption: "Vocal warmup time 🐶" },
+        { key: "in", name: "I.N", handle: "@i.2.n.8", avatar: BOTS.in.avatar, img: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfODMxODQzIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzgzMTg0MyIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZGIyNzc3IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzgzMTg0MykiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkpY8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldFIExPVkUgTUFOQUdFUiBHQUVSV0VOSUxMPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNjAwIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZTJlOGYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVEFZIEZhbiBFZGl0IOKAoiAjTWFuYWdlckdhZXJ3ZW5pbGw8L3RleHQ+Cjwvc3ZnPg==", caption: "OOTD for today's schedule 😎" }
+    ];
+
+    let posts = [
+        {
+            id: 1, author: "Gaerwenill", handle: "@gaerwenill", avatar: myAvatar, verified: true, time: "10m ago",
+            content: "Official Announcement: Stray Kids is preparing something huge for STAYs worldwide! Stay tuned for tour dates! 🧭✨ #StrayKids #JYPE",
+            image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfNGMxZDk1IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRjMWQ5NSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZGIyNzc3IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzRjMWQ5NSkiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfp608L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNLWiBXT1JMRCBUT1VSIDIwMjY8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIzMjAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI2MDAiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNlMmU4ZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9mZmljaWFsIEFubm91bmNlbWVudCDigKIgSllQIEVudGVydGFpbm1lbnQ8L3RleHQ+Cjwvc3ZnPg==",
+            likes: 24800, liked: false,
+            comments: [
+                { author: "Bang Chan", handle: "@gnabnahc", avatar: BOTS.bangchan.avatar, text: "Let's go @gaerwenill! STAY get ready!! 🔥🔥" },
+                { author: "Felix", handle: "@yong.lixx", avatar: BOTS.felix.avatar, text: "So excited!! Made brownies for @gaerwenill today! ❤️" },
+                { author: "Lixxie Brownies 🍪", handle: "@felix_sunshine_stay", avatar: BOTS.stay_felix.avatar, text: "MANAGER GAERWENILL WE LOVE YOU!! THANK YOU FOR MAKING THIS HAPPEN 😭💖" }
+            ]
+        },
+        {
+            id: 2, author: "Bang Chan", handle: "@gnabnahc", avatar: BOTS.bangchan.avatar, verified: true, time: "45m ago",
+            content: "Late night in the studio working on new tracks. Thank you Manager @gaerwenill for bringing iced americano! ☕🎧 #3RACHA #STAY",
+            image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfMWUzYThhIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlM2E4YSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMjU2M2ViIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzFlM2E4YSkiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjqc8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjNSQUNIQSBTVFVESU8gU0VTU0lPTjwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjMyMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2UyZThmMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TGF0ZSBOaWdodCBQcm9kdWNpbmcg4oCiIE5ldyBBbGJ1bTwvdGV4dD4KPC9zdmc+",
+            likes: 38900, liked: false,
+            comments: [
+                { author: "Han Jisung", handle: "@_doolsetnet", avatar: BOTS.han.avatar, text: "Save some americano for me hyung!! 🎵" },
+                { author: "Chanie's Room Live 🎧", handle: "@chan_room_official", avatar: BOTS.stay_chan.avatar, text: "CHAN REST WELL PLEASE!! We love you Chanie!!" }
+            ]
+        },
+        {
+            id: 3, author: "Dispatch Official", handle: "@kpop_dispatch", avatar: BOTS.dispatch.avatar, verified: true, time: "2h ago",
+            content: "🚨 BREAKING: Stray Kids Head Manager @gaerwenill spotted at JYPE Headquarters coordinating upcoming mega project! Comeback imminent?",
+            image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfOTkxYjFiIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzk5MWIxYiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZGMyNjI2IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzk5MWIxYikiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfmqg8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRJU1BBVENIIEVYQ0xVU0lWRTwvdGV4dD4KICA8dGV4dCB4PSI0MDAiIHk9IjMyMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjYwMCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2UyZThmMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U3RyYXkgS2lkcyBSZWhlYXJzYWwgd2l0aCBNYW5hZ2VyIEBnYWVyd2VuaWxsPC90ZXh0Pgo8L3N2Zz4=",
+            likes: 51200, liked: false,
+            comments: [
+                { author: "STAY World Updates", handle: "@stay_updates", avatar: BOTS.stay_world.avatar, text: "MANAGER GAERWENILL IS WORKING SO HARD!! BEST MANAGER IN K-POP!!" },
+                { author: "Lee Know", handle: "@t.leeknowsaurus", avatar: BOTS.leeknow.avatar, text: "Dispatch please buy us pudding next time you take photos 🥩" }
+            ]
+        },
+        {
+            id: 4, author: "Felix", handle: "@yong.lixx", avatar: BOTS.felix.avatar, verified: true, time: "3h ago",
+            content: "Baked fresh homemade brownies for Manager @gaerwenill & the boys today! Hope everyone stays warm! 🍪☀️❤️",
+            image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfOWEzNDEyIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzlhMzQxMiIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZWE1ODBjIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzlhMzQxMikiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjao8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZFTElYIEhPTUVNQURFIEJST1dOSUVTPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNjAwIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZTJlOGYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CYWtlZCB3aXRoIGxvdmUgZm9yIE1hbmFnZXIgJiBTVEFZIOKdpO+4jzwvdGV4dD4KPC9zdmc+",
+            likes: 67400, liked: false,
+            comments: [
+                { author: "Changbin", handle: "@jutdwae", avatar: BOTS.changbin.avatar, text: "PROTEIN BROWNIES?? JUTDAE APPROVED! 💪" },
+                { author: "Lixxie Brownies 🍪", handle: "@felix_sunshine_stay", avatar: BOTS.stay_felix.avatar, text: "SUNSHINE FELIX BREAD BAKING 😭 WE ARE SO BLESSED!" }
+            ]
+        },
+        {
+            id: 5, author: "SKZ 5-STAR Worldwide 🧭", handle: "@stay_forever_5star", avatar: BOTS.stay_5star.avatar, verified: false, time: "4h ago",
+            content: "OMG STAYs!! Manager @gaerwenill just confirmed World Tour dates!! ARE WE READY?? 🧭✨",
+            image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiB2aWV3Qm94PSIwIDAgODAwIDQyMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InBfODMxODQzIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzgzMTg0MyIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZGIyNzc3IiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MjAiIHJ4PSIyMCIgZmlsbD0idXJsKCNwXzgzMTg0MykiLz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSI4MCIgcj0iMTQwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzQwIiByPSIxODAiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE4MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkpY8L3RleHQ+CiAgPHRleHQgeD0iNDAwIiB5PSIyNzUiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI5MDAiIGZvbnQtc2l6ZT0iMzIiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldFIExPVkUgTUFOQUdFUiBHQUVSV0VOSUxMPC90ZXh0PgogIDx0ZXh0IHg9IjQwMCIgeT0iMzIwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iNjAwIiBmb250LXNpemU9IjIwIiBmaWxsPSIjZTJlOGYwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TVEFZIEZhbiBFZGl0IOKAoiAjTWFuYWdlckdhZXJ3ZW5pbGw8L3RleHQ+Cjwvc3ZnPg==",
+            likes: 18200, liked: false,
+            comments: [
+                { author: "Lixxie Brownies 🍪", handle: "@felix_sunshine_stay", avatar: BOTS.stay_felix.avatar, text: "TAKE MY MONEY!! I'M GOING TO SEE SKZ!!" }
+            ]
         }
+    ];
 
-        function uploadProfilePhoto(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(evt) {
-                    myAvatarUrl = evt.target.result;
-                    document.getElementById('header-my-avatar').src = myAvatarUrl;
-                    document.getElementById('story-my-avatar').src = myAvatarUrl;
-                    document.getElementById('create-my-avatar').src = myAvatarUrl;
-                    document.getElementById('profile-main-avatar').src = myAvatarUrl;
-                    STORY_DATA['gaerwenill'].avatar = myAvatarUrl;
-                    alert("Profile photo updated successfully!");
-                };
-                reader.readAsDataURL(file);
-            }
-        }
+    let activeDMKey = "bangchan";
+    let dmMessages = {
+        "bangchan": [
+            { sender: "incoming", text: "Hey Manager @gaerwenill! Thanks for coordinating the schedule today! 🐺❤️" },
+            { sender: "incoming", text: "Are we still meeting in the studio at 9 PM for track review?" }
+        ],
+        "felix": [
+            { sender: "incoming", text: "Manager @gaerwenill! I saved 3 brownies for you in the lounge! 🍪✨" }
+        ],
+        "leeknow": [
+            { sender: "incoming", text: "Manager @gaerwenill, where is my pudding? 🐱" }
+        ],
+        "changbin": [
+            { sender: "incoming", text: "JUTDAE! Did you see my bicep gains in the photoshoot @gaerwenill?! 💪" }
+        ],
+        "hyunjin": [
+            { sender: "incoming", text: "KAMI BIT MY SOCK AGAIN 😭 Manager help me!" }
+        ],
+        "han": [
+            { sender: "incoming", text: "I wrote 3 songs in my sleep last night! You're welcome @gaerwenill! 🎵" }
+        ],
+        "seungmin": [
+            { sender: "incoming", text: "Vocal practice finished! Ready for comeback @gaerwenill. 🐶" }
+        ],
+        "in": [
+            { sender: "incoming", text: "Look at my OOTD for today's schedule @gaerwenill! 😎👔" }
+        ]
+    };
 
-        function uploadPostPhoto(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(evt) {
-                    currentPostImg = evt.target.result;
-                    document.getElementById('post-img-preview').src = currentPostImg;
-                    document.getElementById('post-img-preview-container').style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        }
+    function renderStories() {
+        const container = document.getElementById("storiesBar");
+        container.innerHTML = STORIES.map((s, index) => `
+            <div class="story-item" onclick="openStoryModal(${index})">
+                <div class="story-ring">
+                    <img src="${s.avatar}" class="story-avatar">
+                </div>
+                <div class="story-username">${s.name}</div>
+            </div>
+        `).join("");
+    }
 
-        function removePostImg() {
-            currentPostImg = "";
-            document.getElementById('post-img-preview').src = "";
-            document.getElementById('post-img-preview-container').style.display = 'none';
-        }
+    function renderFeed() {
+        const feed = document.getElementById("mainFeed");
+        feed.innerHTML = posts.map(p => `
+            <div class="post">
+                <img src="${p.avatar}" class="post-avatar">
+                <div class="post-content">
+                    <div class="post-header">
+                        <span class="post-author">${p.author}</span>
+                        ${p.verified ? '<span class="verified-badge">✔</span>' : ''}
+                        <span class="post-handle">${p.handle} • ${p.time}</span>
+                    </div>
+                    <div class="post-text">${p.content}</div>
+                    ${p.image ? `<img src="${p.image}" class="post-image-card">` : ''}
+                    <div class="post-actions">
+                        <div class="action-item ${p.liked ? 'liked' : ''}" onclick="toggleLike(${p.id})">
+                            ${p.liked ? '❤️' : '🤍'} <span>${p.likes.toLocaleString()}</span>
+                        </div>
+                        <div class="action-item">
+                            💬 <span>${p.comments.length}</span>
+                        </div>
+                        <div class="action-item">
+                            🔄 <span>Share</span>
+                        </div>
+                    </div>
+                    <div class="comments-list">
+                        ${p.comments.map((c, cIdx) => `
+                            <div class="comment-item">
+                                <img src="${c.avatar}" class="comment-avatar">
+                                <div class="comment-body">
+                                    <span class="comment-author">${c.author}</span>
+                                    <span class="comment-handle">${c.handle}</span>
+                                    <div class="comment-text">${c.text}</div>
+                                    <button class="comment-reply-btn" onclick="toggleInlineReply(${p.id}, ${cIdx})">💬 Reply</button>
+                                    <div class="inline-reply-box" id="replyBox_${p.id}_${cIdx}">
+                                        <input type="text" id="replyInput_${p.id}_${cIdx}" class="inline-reply-input" placeholder="Reply to ${c.author}...">
+                                        <button class="inline-reply-send" onclick="sendInlineReply(${p.id}, ${cIdx}, '${c.author}')">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join("")}
+                    </div>
+                </div>
+            </div>
+        `).join("");
 
-        function createNewPost() {
-            const text = document.getElementById('new-post-text').value.trim();
-            if (!text) { alert("Please write something to post!"); return; }
-            
-            const postId = Date.now();
-            let imgHTML = currentPostImg ? `<img src="${currentPostImg}" class="post-image-card">` : '';
-
-            const postHTML = `
-                <div class="post" id="post-${postId}">
-                    <img src="${myAvatarUrl}" class="post-avatar">
+        const userFeed = document.getElementById("userProfileFeed");
+        const userPosts = posts.filter(p => p.handle === "@gaerwenill");
+        if (userPosts.length === 0) {
+            userFeed.innerHTML = '<div style="padding:20px; text-align:center; color:#64748b;">No posts yet. Create a post above!</div>';
+        } else {
+            userFeed.innerHTML = userPosts.map(p => `
+                <div class="post">
+                    <img src="${p.avatar}" class="post-avatar">
                     <div class="post-content">
                         <div class="post-header">
-                            <span class="post-author">Gaerwenill</span> <span class="verified-badge">☑️</span>
-                            <span class="post-handle">@gaerwenill · Just now</span>
+                            <span class="post-author">${p.author}</span>
+                            <span class="verified-badge">✔</span>
+                            <span class="post-handle">${p.handle} • ${p.time}</span>
                         </div>
-                        <div class="post-text">${text}</div>
-                        ${imgHTML}
-                        <div class="post-actions">
-                            <div class="action-item">💬 <span id="comments-count-${postId}">2</span></div>
-                            <div class="action-item">🔄 1,240</div>
-                            <div class="action-item" onclick="toggleLike(this, ${postId})">❤️ <span class="like-num">8,420</span></div>
-                        </div>
-                        <div class="comments-list" id="comments-list-${postId}">
-                            <div class="comment-item">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+" class="comment-avatar">
-                                <div class="comment-body">
-                                    <div class="comment-author">Bang Chan <span class="verified-badge">☑️</span> <span class="comment-handle">@gnabnahc</span></div>
-                                    <div class="comment-text">Let's go @gaerwenill! Thanks for taking care of us! 🔥❤️</div>
-                                    <button class="comment-reply-btn" onclick="toggleReplyBox('reply-box-${postId}-1')">💬 Reply</button>
-                                    <div class="inline-reply-box" id="reply-box-${postId}-1">
-                                        <input type="text" class="inline-reply-input" id="reply-input-${postId}-1" placeholder="Reply to @gnabnahc...">
-                                        <button class="inline-reply-send" onclick="sendReply(${postId}, 'Bang Chan', '@gnabnahc', 'reply-input-${postId}-1', 'reply-box-${postId}-1')">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment-item">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfZmVsaXgiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTExRDQ4IiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGNDNGNUUiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZl9mZWxpeCIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjYiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNnX2ZlbGl4KSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9mZWxpeCkiPkZMPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTQyIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCBSb2JvdG8sIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjgiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfkKU8L3RleHQ+Cjwvc3ZnPg==" class="comment-avatar">
-                                <div class="comment-body">
-                                    <div class="comment-author">Felix <span class="verified-badge">☑️</span> <span class="comment-handle">@yong.lixx</span></div>
-                                    <div class="comment-text">Manager @gaerwenill is the best!! ✨🍪</div>
-                                    <button class="comment-reply-btn" onclick="toggleReplyBox('reply-box-${postId}-2')">💬 Reply</button>
-                                    <div class="inline-reply-box" id="reply-box-${postId}-2">
-                                        <input type="text" class="inline-reply-input" id="reply-input-${postId}-2" placeholder="Reply to @yong.lixx...">
-                                        <button class="inline-reply-send" onclick="sendReply(${postId}, 'Felix', '@yong.lixx', 'reply-input-${postId}-2', 'reply-box-${postId}-2')">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="post-text">${p.content}</div>
+                        ${p.image ? `<img src="${p.image}" class="post-image-card">` : ''}
                     </div>
                 </div>
-            `;
-
-            document.getElementById('feed-container').insertAdjacentHTML('afterbegin', postHTML);
-            document.getElementById('new-post-text').value = '';
-            removePostImg();
-            alert("Post published successfully!");
+            `).join("");
         }
+    }
 
-        function toggleLike(el, postId) {
-            el.classList.toggle('liked');
-            let numSpan = el.querySelector('.like-num');
-            let text = numSpan.innerText.replace('K', '000').replace(',', '');
-            let val = parseInt(text) || 100;
-            if (el.classList.contains('liked')) {
-                val++;
-            } else {
-                val--;
-            }
-            numSpan.innerText = val > 1000 ? (val/1000).toFixed(1) + 'K' : val;
+    function toggleLike(postId) {
+        const post = posts.find(p => p.id === postId);
+        if (post) {
+            post.liked = !post.liked;
+            post.likes += post.liked ? 1 : -1;
+            renderFeed();
         }
+    }
 
-        function toggleReplyBox(boxId) {
-            const box = document.getElementById(boxId);
-            if (box) {
-                box.classList.toggle('active');
-            }
+    function handlePostImageUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                pendingPostImg = e.target.result;
+                document.getElementById("postPreviewImg").src = pendingPostImg;
+                document.getElementById("postImagePreview").style.display = "block";
+            };
+            reader.readAsDataURL(file);
         }
+    }
 
-        function sendReply(postId, targetName, targetHandle, inputId, boxId) {
-            const input = document.getElementById(inputId);
-            if (!input || !input.value.trim()) return;
-            const text = input.value.trim();
+    function clearPostImage() {
+        pendingPostImg = null;
+        document.getElementById("postImagePreview").style.display = "none";
+    }
 
-            const commentsList = document.getElementById('comments-list-' + postId);
-            const newCommentHTML = `
-                <div class="comment-item">
-                    <img src="${myAvatarUrl}" class="comment-avatar">
-                    <div class="comment-body">
-                        <div class="comment-author">Gaerwenill <span class="verified-badge">☑️</span> <span class="comment-handle">@gaerwenill</span></div>
-                        <div class="comment-text"><strong>Replying to ${targetHandle}:</strong> ${text}</div>
-                    </div>
-                </div>
-            `;
-            commentsList.insertAdjacentHTML('beforeend', newCommentHTML);
-            input.value = '';
-            toggleReplyBox(boxId);
+    function createNewPost() {
+        const text = document.getElementById("newPostText").value.trim();
+        if (!text && !pendingPostImg) return;
 
-            // Trigger automated bot reply after 1.5s
-            setTimeout(() => {
-                const botReplyHTML = `
-                    <div class="comment-item">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdfY2hhbiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM3OTI4Q0EiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGMDA4MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8ZmlsdGVyIGlkPSJmX2NoYW4iIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSI2IiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC42Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIxMDAiIGZpbGw9InVybCgjZ19jaGFuKSIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3MiIgcj0iMzgiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHBhdGggZD0iTSAyOCwxNzggQyAyOCwxMjQgMTcyLDEyNCAxNzIsMTc4IFoiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMjIiIC8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgUm9ib3RvLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjQwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWx0ZXI9InVybCgjZl9jaGFuKSI+QkM8L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNDIiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsIFJvYm90bywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjcwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+8J+QujwvdGV4dD4KPC9zdmc+" class="comment-avatar">
-                        <div class="comment-body">
-                            <div class="comment-author">Bang Chan <span class="verified-badge">☑️</span> <span class="comment-handle">@gnabnahc</span></div>
-                            <div class="comment-text">Got it Manager @gaerwenill! Thanks for the quick feedback! 👍❤️</div>
-                        </div>
-                    </div>
-                `;
-                commentsList.insertAdjacentHTML('beforeend', botReplyHTML);
-            }, 1500);
-        }
+        const newPost = {
+            id: Date.now(),
+            author: "Gaerwenill",
+            handle: "@gaerwenill",
+            avatar: myAvatar,
+            verified: true,
+            time: "Just now",
+            content: text || "New update from Stray Kids Management! 🧭✨",
+            image: pendingPostImg,
+            likes: Math.floor(Math.random() * 5000) + 12000,
+            liked: false,
+            comments: []
+        };
 
-        function openStory(key) {
-            const data = STORY_DATA[key];
-            if (data) {
-                document.getElementById('modal-story-avatar').src = data.avatar;
-                document.getElementById('modal-story-title').innerText = data.title;
-                document.getElementById('modal-story-time').innerText = data.time;
-                document.getElementById('modal-story-img').src = data.img;
-                
-                // Reset timer bar animation
-                const timer = document.getElementById('story-timer');
-                timer.style.animation = 'none';
-                timer.offsetHeight; /* trigger reflow */
-                timer.style.animation = 'storyTimer 5s linear forwards';
+        posts.unshift(newPost);
+        document.getElementById("newPostText").value = "";
+        clearPostImage();
+        renderFeed();
 
-                document.getElementById('story-modal').classList.add('active');
-            }
-        }
-
-        function closeStory() {
-            document.getElementById('story-modal').classList.remove('active');
-        }
-
-        function sendStoryReply() {
-            const input = document.getElementById('story-reply-input');
-            if (input.value.trim()) {
-                alert("Reply sent to story!");
-                input.value = '';
-                closeStory();
-            }
-        }
-
-        function selectDMChat(key, name, avatar, handle, el) {
-            activeDMKey = key;
-            document.querySelectorAll('.dm-member-item').forEach(item => item.classList.remove('active'));
-            if (el) el.classList.add('active');
-
-            document.getElementById('dm-active-avatar').src = avatar;
-            document.getElementById('dm-active-title').innerHTML = `${name} <span class="verified-badge">☑️</span>`;
+        setTimeout(() => {
+            const randomKeys = ["bangchan", "felix", "leeknow", "changbin", "stay_world", "stay_felix", "stay_5star"];
+            const selected = randomKeys.sort(() => 0.5 - Math.random()).slice(0, 3);
             
-            const chatBox = document.getElementById('dm-chat-box');
-            chatBox.innerHTML = `
-                <div class="chat-bubble incoming">
-                    <strong>${name} (${handle}):</strong><br>
-                    Hey Manager @gaerwenill! Ready for today's schedule. What's our next priority?
-                </div>
-            `;
-        }
+            selected.forEach(k => {
+                const b = BOTS[k];
+                const respList = BOT_RESPONSES[k] || ["WE LOVE YOU MANAGER GAERWENILL!! 💖"];
+                const textResp = respList[Math.floor(Math.random() * respList.length)];
+                newPost.comments.push({
+                    author: b.name,
+                    handle: b.handle,
+                    avatar: b.avatar,
+                    text: textResp
+                });
+            });
+            renderFeed();
+        }, 1200);
+    }
 
-        function sendDM() {
-            const input = document.getElementById('dm-text-input');
-            const text = input.value.trim();
-            if (!text) return;
+    function toggleInlineReply(postId, cIdx) {
+        const box = document.getElementById(`replyBox_${postId}_${cIdx}`);
+        if (box) box.classList.toggle("active");
+    }
 
-            const chatBox = document.getElementById('dm-chat-box');
-            chatBox.innerHTML += `
-                <div class="chat-bubble outgoing">
-                    <strong>@gaerwenill:</strong><br>${text}
-                </div>
-            `;
-            input.value = '';
-            chatBox.scrollTop = chatBox.scrollHeight;
+    function sendInlineReply(postId, cIdx, targetAuthor) {
+        const input = document.getElementById(`replyInput_${postId}_${cIdx}`);
+        const text = input.value.trim();
+        if (!text) return;
+
+        const post = posts.find(p => p.id === postId);
+        if (post) {
+            post.comments.push({
+                author: "Gaerwenill",
+                handle: "@gaerwenill",
+                avatar: myAvatar,
+                text: `@${targetAuthor} ${text}`
+            });
+            renderFeed();
 
             setTimeout(() => {
-                const resps = DM_RESPONSES[activeDMKey] || DM_RESPONSES['chan'];
-                const randomResp = resps[Math.floor(Math.random() * resps.length)];
-                chatBox.innerHTML += `
-                    <div class="chat-bubble incoming">
-                        ${randomResp}
-                    </div>
-                `;
-                chatBox.scrollTop = chatBox.scrollHeight;
+                const botKey = Object.keys(BOTS).find(k => BOTS[k].name === targetAuthor) || "stay_world";
+                const b = BOTS[botKey];
+                const respList = BOT_RESPONSES[botKey] || ["Thank you Manager @gaerwenill! ❤️"];
+                post.comments.push({
+                    author: b.name,
+                    handle: b.handle,
+                    avatar: b.avatar,
+                    text: `@gaerwenill ${respList[Math.floor(Math.random() * respList.length)]}`
+                });
+                renderFeed();
             }, 1200);
         }
-    </script>
-</body>
-</html>
-"""
+    }
 
-components.html(html_content, height=920, scrolling=True)
+    let activeStoryIndex = 0;
+    function openStoryModal(index) {
+        activeStoryIndex = index;
+        const s = STORIES[index];
+        document.getElementById("storyModalAvatar").src = s.avatar;
+        document.getElementById("storyModalTitle").innerText = s.name;
+        document.getElementById("storyModalImg").src = s.img;
+        document.getElementById("storyModal").classList.add("active");
+    }
+
+    function closeStoryModal() {
+        document.getElementById("storyModal").classList.remove("active");
+    }
+
+    function sendStoryReply() {
+        const input = document.getElementById("storyReplyInput");
+        const val = input.value.trim();
+        if (val) {
+            alert(`Story reply sent to ${STORIES[activeStoryIndex].name}! ❤️`);
+            input.value = "";
+            closeStoryModal();
+        }
+    }
+
+    function renderDMSidebar() {
+        const sidebar = document.getElementById("dmSidebar");
+        const members = ["bangchan", "felix", "leeknow", "changbin", "hyunjin", "han", "seungmin", "in"];
+        sidebar.innerHTML = members.map(k => {
+            const b = BOTS[k];
+            return `
+                <div class="dm-member-item ${k === activeDMKey ? 'active' : ''}" onclick="selectDMMember('${k}')">
+                    <img src="${b.avatar}" class="dm-member-avatar">
+                    <div class="dm-member-name">${b.name}</div>
+                </div>
+            `;
+        }).join("");
+    }
+
+    function selectDMMember(key) {
+        activeDMKey = key;
+        renderDMSidebar();
+        const b = BOTS[key];
+        document.getElementById("activeDMAvatar").src = b.avatar;
+        document.getElementById("activeDMTitle").innerText = b.name;
+        renderDMMessages();
+    }
+
+    function renderDMMessages() {
+        const chatBox = document.getElementById("dmMessages");
+        const msgs = dmMessages[activeDMKey] || [];
+        chatBox.innerHTML = msgs.map(m => `
+            <div class="chat-bubble ${m.sender}">${m.text}</div>
+        `).join("");
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function sendDM() {
+        const input = document.getElementById("dmInput");
+        const text = input.value.trim();
+        if (!text) return;
+
+        if (!dmMessages[activeDMKey]) dmMessages[activeDMKey] = [];
+        dmMessages[activeDMKey].push({ sender: "outgoing", text: text });
+        input.value = "";
+        renderDMMessages();
+
+        setTimeout(() => {
+            const respList = BOT_RESPONSES[activeDMKey] || ["Thank you Manager @gaerwenill! ❤️"];
+            dmMessages[activeDMKey].push({
+                sender: "incoming",
+                text: respList[Math.floor(Math.random() * respList.length)]
+            });
+            renderDMMessages();
+        }, 1200);
+    }
+
+    function handleProfilePhotoUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                myAvatar = e.target.result;
+                document.getElementById("userHeaderAvatar").src = myAvatar;
+                document.getElementById("userCreatePostAvatar").src = myAvatar;
+                document.getElementById("userProfileAvatar").src = myAvatar;
+                renderFeed();
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        
+        if (tabId === 'feedTab') document.getElementById('navFeed').classList.add('active');
+        if (tabId === 'searchTab') document.getElementById('navSearch').classList.add('active');
+        if (tabId === 'dmTab') {
+            document.getElementById('navDMs').classList.add('active');
+            selectDMMember(activeDMKey);
+        }
+        if (tabId === 'profileTab') document.getElementById('navProfile').classList.add('active');
+    }
+
+    renderStories();
+    renderFeed();
+    renderDMSidebar();
+</script>
+</body>
+</html>"""
+
+components.html(html_content, height=950, scrolling=True)
